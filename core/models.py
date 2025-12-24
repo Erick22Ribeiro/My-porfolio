@@ -1,0 +1,54 @@
+from django.db import models
+
+# Create your models here.
+class Skill(models.Model):
+    nome = models.CharField(max_length=100)
+    nivel = models.IntegerField(help_text="Nível de 0 a 100")
+    cor = models.CharField(max_length=7, default="#3498db", help_text="Cor em hexadecimal (ex: #3498db)")
+    ordem = models.IntegerField(default=0, help_text="Ordem de exibição")
+
+    icone = models.CharField(
+        max_length=60,
+        default='fa-solid fa-code',
+        help_text="Classe do ícone (ex: fa-brands fa-python, devicon-java-plain)"
+    )
+    class Meta:
+        ordering = ['-nivel', 'ordem']  # Ordena por nível (maior primeiro), e ignora a ordem, se eu quero uma ordem específica é só remover o '-nivel'
+
+
+    def __str__(self):
+        return f"{self.nome} - {self.nivel}%"
+    
+
+class Skill_2(models.Model):
+    nome = models.CharField(max_length=100)
+    nivel = models.IntegerField(help_text="Nível de 0 a 100")
+    cor = models.CharField(max_length=7, default="#3498db", help_text="Cor em hexadecimal (ex: #3498db)")
+    ordem = models.IntegerField(default=0, help_text="Ordem de exibição")
+
+    icone = models.CharField(
+        max_length=60,
+        default='fa-solid fa-code',
+        help_text="Classe do ícone (ex: fa-brands fa-python, devicon-java-plain)"
+    )
+
+    class Meta:
+        ordering = ['-nivel', 'ordem']  # Ordena por nível (maior primeiro), e ignora a ordem, se eu quero uma ordem específica é só remover o '-nivel'
+
+
+    def __str__(self):
+        return f"{self.nome} - {self.nivel}%"
+    
+
+class Projeto(models.Model):
+    titulo = models.CharField(max_length=200)
+    descricao = models.TextField()
+    imagem = models.ImageField(upload_to='projetos/')   #precisa instalar a biblioteca pillow
+    tecnologias = models.CharField(max_length=200)
+    link_github = models.URLField(blank=True)
+    link_demo = models.URLField(blank=True)
+    ordem = models.IntegerField(default=0)
+    criado_em = models.DateField()
+
+    class Meta:
+        ordering = ['ordem']

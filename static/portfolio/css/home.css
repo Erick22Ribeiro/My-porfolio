@@ -1,0 +1,497 @@
+/*  Estilo geral */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* fonte do google */
+    font-family: "Outfit", sans-serif;
+    /* font-optical-sizing: auto; */
+    font-weight: 100;
+   /*  font-style: normal; */
+
+
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
+    
+    color: white;
+}
+
+/* esta classe serve para delimitar a área dos itens da página */
+.interface {
+    max-width: 1280px;
+    margin: 0 auto;
+
+}
+
+.flex{
+    display: flex;
+}
+
+.habilidades i{
+    padding-right: 2%
+}
+
+button:hover{       /* pra deixar todos os botões do site com esse hover */
+    transform: scale(1.05);
+    box-shadow: 0px 0px 8px #3CA6A6;
+}
+
+section h1{         /* define todas as h1 do projeto */
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+/* fim estilo geral */
+
+/* ------------------------------------------------------------------ */
+
+/* Estilo do cabeçalho */
+/* menu hamburguer */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+
+  transition: 0.5s;
+}
+.material-symbols-outlined:hover{
+    transform: scale(1.3);
+    color: #3CA6A6;
+}
+
+.img-logo {
+    width: 100px;
+    height: 100px;
+}
+
+/* procura a classe interface dentro de header */
+header > .interface {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+header a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    display: inline-block;
+    
+    transition: 0.5s;
+}
+header a:hover{
+    transform: scale(1.06);
+    color: #3ba5a5;
+}
+
+header nav ul{
+    list-style-type: none;
+}
+
+header nav ul li{
+    display: inline-block;
+    padding: 0 40px;
+}
+header {
+    border-bottom: 1px solid #3ba5a575; 
+    /* width: 95%;   */            /* isso é pra deixar ela sem encostar na borda */
+    /* margin: 0 auto;  */
+}
+
+
+
+/* ----------------------------------------------------------------------- */
+
+/* estilo do topo */
+section.topo{
+    padding: 180px 5%;
+}
+
+section.topo .flex{
+    align-items: center;
+    justify-content: center;
+    gap: 200px;  /* distancia o texto da imagem */
+}
+
+.topo .txt-topo h1{
+    color: white;
+    line-height: 35px;
+    font-weight: bold; /* deixa o texto mais grosso */
+}
+
+.topo .txt-topo p{
+    color: white;
+    margin: 25px 0;
+    font-size: 20px;
+}
+
+.topo .txt-topo h1 span{
+    color: #3CA6A6;
+    font-weight: bold; /* deixa o ponto final mais grosso */
+}
+
+.topo button{
+    padding: 10px 30px;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #3CA6A6;
+    border: 0;
+    border-radius: 15px;
+    cursor: pointer;
+
+    transition: 0.5s;
+}
+
+.btn-contato{
+    padding: 5px 10px;
+    color: blanchedalmond;
+}
+
+.topo .img-topo img{
+    position: relative;  /* animação só funciona se setar um position */
+    animation: flutuar 3s ease-in-out infinite alternate;
+}
+
+@keyframes flutuar {
+    0%{
+        top: 0;
+    }
+    100%{
+        top: 30px;
+    }
+}
+
+/* -------------------------------------------------------------------- */
+
+/* habilidades */
+section.habilidades {
+    padding: 180px 5%;
+}
+
+.habilidades h1 {
+    text-align: center;
+    /* margin-bottom: 10px; */
+    font-weight: bold;
+}
+
+/* Layout principal */
+section.habilidades .flex {
+    display: flex;
+    flex-wrap: wrap; /* pra fazer o grafico descer */
+    align-items: center;
+    gap: 15%;
+}
+
+/* Bloco (linguagens / ferramentas) */
+.habilidades-bloco {
+    display: flex;
+    flex-direction: column;
+}
+
+.habilidades-titulo {
+    margin-bottom: 40px;
+    font-size: 1.2em;
+}
+
+/* Container das skills */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Skill individual (PADRÃO ÚNICO) */
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Nome */
+.skill-name {
+    width: 120px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Barra */
+.skill-bar {
+    flex: 1;
+    width: 500px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+/* Progresso */
+.skill-progress {
+    height: 100%;
+    border-radius: 5px;
+    animation: fillBar 2s ease-in-out;
+    transition: width 1s ease-in-out;
+}
+
+@keyframes fillBar {
+    from { width: 0%; }
+}
+
+/* Ícones */
+.skill-icon {
+    font-size: 30px;
+    width: 32px;          /* força largura fixa */
+    text-align: center;  /* centraliza o ícone dentro */
+    flex-shrink: 0;      /* impede o flex de encolher */
+}
+
+/* Gráfico */
+.skills-chart {
+    width: 250px;
+    height: 250px;
+    margin-top: 10%;
+    align-self: center;
+}
+
+section.habilidades p{
+    margin-top: 40px;
+}
+
+/* -------------------------------------------------------------- */
+
+/* SOBRE */
+section.sobre{
+    padding: 180px 5%;
+}
+
+section.sobre .flex{
+    align-items: center;
+    gap: 60px;
+}
+
+.sobre .txt-sobre p{
+    margin: 20px 0;
+    text-align: justify;
+}
+
+.sobre .txt-sobre .btn-social button{
+    width: 60px;
+    height: 60px;
+    border-radius: 40%;
+    border: none;
+    background-color: #3CA6A6;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 0 5px;
+
+    transition: 0.5s;
+}
+
+/* -------------------------------------------------------------------- */
+
+/* PROJETOS */
+section.projetos h1{
+   text-align: center;
+
+}
+section.projetos{
+    padding: 180px 5%;
+    /* box-shadow: 0 0 40px 10px #3ca6a648; */
+}
+
+section.projetos .flex{
+    display: flex;
+    flex-wrap: wrap; /* faz com que quebre de linha ao adicionar mais elementos */
+    justify-content: space-around;  /* deixa os cards de projetos alinhados no centro e espaçados */
+    margin-top: 60px;
+    gap: 50px;
+}
+
+.projeto-card{
+    width: 350px;
+    height: 450px;
+    border-radius: 40px;
+}
+
+.projeto-imagem {
+    width: 100%;
+    height: 100%;           /* obrigatória para o div aparecer*/
+    background-size: cover; /* faz a imagem preencher o div */
+    background-position: 100% 0%; /* faz a imagem aparecer no centro horizontamente e no topo verticalmente*/
+    cursor: pointer;
+    border-radius: 40px;
+    position: relative;
+
+    transition: 3s;
+}
+.projeto-imagem:hover{
+    background-position: 100% 100%;  /* ao passar o mouse a imagem vai para o final verticalmente */
+}
+
+.projeto-info{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.projeto-info h2{
+    font-weight: bold;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: #00000093; */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.8),   /* mais escuro em cima */
+        rgba(0, 0, 0, 0.2)    /* mais claro embaixo */
+    );
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+
+    transition: .7s;
+}
+.overlay:hover{
+    opacity: 1;
+}
+
+.tools-area{
+    background-color: rgba(128, 128, 128, 0.288);
+    padding: 0 3px;
+    border-radius: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .projetos-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 20px;
+}
+
+.projetos-section h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+}
+
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.projeto-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    height: 400px;
+    position: relative;
+}
+
+.projeto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.projeto-imagem {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.projeto-imagem img {
+    width: 100%;
+    height: auto;
+    transition: transform 3s ease;
+    display: block;
+}
+
+.projeto-card:hover .projeto-imagem img {
+    transform: translateY(calc(-100% + 400px));
+}
+
+.projeto-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 20px;
+    color: white;
+
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.projeto-card:hover .projeto-info {
+    transform: translateY(0);
+}
+
+.projeto-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+}
+
+.projeto-info p {
+    margin: 0 0 15px 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.tecnologias {
+    margin-bottom: 15px;
+}
+
+.tecnologias span {
+    background: #3498db;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    display: inline-block;
+}
+
+.projeto-links {
+    display: flex;
+    gap: 10px;
+}
+
+.projeto-links a {
+    background: #2ecc71;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background 0.3s ease;
+}
+
+.projeto-links a:hover {
+    background: #27ae60;
+} */
