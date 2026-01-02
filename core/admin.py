@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Skill, Skill_2, Projeto
+from .models import Skill, Skill_2, Projeto, Tecnologia
 
 # Register your models here.
 @admin.register(Skill)
@@ -18,6 +18,8 @@ class SkillAdmin(admin.ModelAdmin):
 
 @admin.register(Projeto)
 class ProjetoAdmin(admin.ModelAdmin):
-    list_display = ['titulo', 'descricao', 'imagem', 'tecnologias', 'link_github', 'link_demo', 'ordem', 'criado_em']
+    list_display = ['titulo', 'descricao', 'imagem', 'link_github', 'link_demo', 'ordem', 'criado_em']
 
-
+@admin.register(Tecnologia)
+class TecnologiaAdmin(admin.ModelAdmin):
+    list_display = ['nome', 'icone']

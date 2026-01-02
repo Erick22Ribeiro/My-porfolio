@@ -40,11 +40,22 @@ class Skill_2(models.Model):
         return f"{self.nome} - {self.nivel}%"
     
 
+class Tecnologia(models.Model):
+    nome = models.CharField(max_length=50)
+    icone = models.CharField(
+        max_length=50, 
+        default='fa-solid fa-code',
+        help_text="Classe do ícone (ex: fa-brands fa-python, devicon-java-plain)")
+
+    def __str__(self):
+        return self.nome
+    
+
 class Projeto(models.Model):
     titulo = models.CharField(max_length=200)
     descricao = models.TextField()
     imagem = models.ImageField(upload_to='projetos/')   #precisa instalar a biblioteca pillow
-    tecnologias = models.CharField(max_length=200)
+    tecnologias = models.ManyToManyField(Tecnologia)  #relacionamento muitos para muitos
     link_github = models.URLField(blank=True)
     link_demo = models.URLField(blank=True)
     ordem = models.IntegerField(default=0)
@@ -52,3 +63,5 @@ class Projeto(models.Model):
 
     class Meta:
         ordering = ['ordem']
+
+

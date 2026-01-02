@@ -28,31 +28,44 @@
 
 <body>
 
-    <header>
+    <header id="header">
         <div class="interface"> <!-- div para fazer com que os itens da página não encostem nas laterais -->
             <div class="logo">
                 <a href="#">
-                    <img src="static/portfolio/images/logo02.png" alt="logo" class="img-logo">
+                    <img src="static/portfolio/images/logo02.png" alt="logo" class="img-logo-p">
 
                 </a>
             </div> <!-- logo -->
 
             <nav class="menu-desktop">
                 <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Habilidades</a></li>
-                    <li><a href="#">Projetos</a></li>
-                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#topo">Início</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#">Contato</a></li>
                 </ul>
             </nav>
 
-            <div class="btn-contato">
-                <!-- <a href="#">
-                    <button>Contato</button>
-                </a> -->
-                <span class="material-symbols-outlined">
-                    dehaze
-                </span>
+            <div class="btn-hamburguer">
+
+                <button class="menu-hamburguer" id="menu-hamb" onclick="animar()">
+                    <span class="linha"></span>
+                    <span class="linha"></span>
+                    <span class="linha"></span>
+                </button>
+
+                <div class="opcoes-hamburguer">
+                    <nav>
+                        <ul>
+                            <li><a href="#">Início</a></li>
+                            <li><a href="#">Habilidades</a></li>
+                            <li><a href="#">Sobre</a></li>
+                            <li><a href="#">Projetos</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
             </div>
 
         </div><!--  interface -->
@@ -60,12 +73,21 @@
 
     <main>
 
-        <section class="topo">
+        <section class="topo" id="topo">
             <div class="interface">
                 <div class="flex">
                     <div class="txt-topo">
 
-                        <h1>Hi, I'm Erick Ribeiro<span>.</span></h1>
+                        <h1>Olá, meu nome é Erick Ribeiro<span>.</span></h1>
+                        
+                        <div class="container-texto-dinamixo">
+                            <span class="texto-fixo">Eu sou</span>
+                            <span class="texto-dinamico">
+                                <span id="texto-animado"></span>
+                            </span>
+                        </div>
+
+                            
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
                             been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
                             galley of type and scrambled it to make a type specimen book.</p>
@@ -87,8 +109,7 @@
         </section>
         <!-- FIM TOPO -->
 
-
-        <section class="habilidades">
+        <section class="habilidades" id="habilidades">
             <div class="interface">
                 <h1>Minhas Habilidades</h1>
 
@@ -101,7 +122,9 @@
                         <div class="skills-container">
                             {% for skill in skills %}
                             <div class="skill-item">
-                                <i class="{{ skill.icone }} skill-icon"></i>
+                             
+                                    <i class="{{ skill.icone }} skill-icon"></i>
+                
                                 <span class="skill-name">{{ skill.nome }}</span>
 
                                 <div class="skill-bar">
@@ -148,8 +171,7 @@
         </section>
         <!-- FIM HABILIDADES -->
 
-
-        <section class="sobre">
+        <section class="sobre" id="sobre">
             <div class="interface">
                 <div class="flex">
 
@@ -175,58 +197,109 @@
                             <a href="#"><button><i class="bi bi-linkedin"></i></button></a>
                         </div>
                     </div>
-    
+
                 </div>
             </div>
         </section>
         <!-- FIM SOBRE -->
 
-        <section class="projetos">
+        <section class="projetos" id="projetos">
             <div class="interface">
                 <h1>Meus projetos</h1>
                 <div class="flex">
-                    
+
                     {% for projeto in projetos %}
                     <div class="projeto-card">
-                        <div class="projeto-imagem" style="background-image: url('{{ projeto.imagem.url }}');">
-                            <div class="overlay">
-                                <div class="projeto-info">
-                                    <h2>{{ projeto.titulo }}</h2>
-                                    <p>{{ projeto.descricao }}</p>
 
-                                    <div class="tecnologias">
-                                        <i class="bi bi-code-slash"></i>
-                                        <span class="tools-area">{{ projeto.tecnologias}}</span>       
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="projeto-imagem" 
+                            style="background-image: url('{{ projeto.imagem.url }}');">
+                            <i class="bi bi-box-arrow-up-right"></i>
                         </div>
 
-                        <!-- <div class="projeto-info">
-                            <h3>{{ projeto.titulo }}</h3>
-                            <p>{{ projeto.descricao }}</p>
+                        <div class="projeto-info">
+                            <h2>{{ projeto.titulo }}</h2>
+                            <p class="p-escrolavel">{{ projeto.descricao }}</p>
 
-                            <div class="tecnologias">
-                                <span>{{ projeto.tecnologias}}</span>
+                            <div class="container-tecnologias">
+                                {% for tech in projeto.tecnologias.all %}
+                                    <span class="tools-area">
+                                        <i class="{{ tech.icone }}"></i> 
+                                        {{ tech.nome }}
+                                    </span>       
+                                {% empty %}
+                                    <span class="tech">Sem tecnologias</span>
+                                {% endfor %}
                             </div>
-                        </div> -->
 
+                            <div class="projeto-links">
+                                <a href="#" target="_blank" class="btn-projeto">
+                                    <i class="bi bi-github"></i>
+                                    <span>Code</span>
+                                </a>
+
+                                <a href="#" target="_blank" class="btn-projeto">
+                                    <i class="bi bi-display"></i>
+                                    <span>Prévia</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    
                     </div>
+
+                
 
                     {% empty %}
                         <p>Nenhum projeto cadastrado ainda</p>
-
                     {% endfor %}
-    
                 </div>
+
+            </div>
+        
+        </section>
+        <!-- Fim projetos -->
+
+        <section class="contato">
+            <div class="interface">
+                <fiv class="flex">
+
+
+
+
+                </fiv>
             </div>
         </section>
-
+        <!-- fim contato -->
 
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{% static 'portfolio/js/home.js' %}"></script>
+    <footer>
+        <div class="interface">
+            <div class="line-footer">
+                <div class="flex">
+                    <div class="logo-footer">
+                        <img src="static/portfolio/images/logo02.png" alt="" class="img-logo-p">
+                    </div>
+
+                    <div class="btn-social">
+                        <a href="#"><button><i class="bi bi-instagram"></i></button></a>
+                        <a href="#"><button><i class="bi bi-linkedin"></i></button></a>
+                        <a href="https://github.com/Erick22Ribeiro" target="_blank" rel="noopener noreferrer"><button><i
+                                    class="bi bi-github"></i></button></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="line-footer">
+                <p><i class="bi bi-envelope-fill"></i> <a
+                        href="mailto:erick2ribeirogg@gmail.com">erick2ribeirogg@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+    <!-- Fim footer  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="{% static 'portfolio/js/home.js' %}" defer></script>
 
 </body>
 
