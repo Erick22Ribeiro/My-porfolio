@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+
+#Classe das habilidades de linguagens e frameworks
 class Skill(models.Model):
     nome = models.CharField(max_length=100)
     nivel = models.IntegerField(help_text="Nível de 0 a 100")
@@ -19,7 +21,7 @@ class Skill(models.Model):
     def __str__(self):
         return f"{self.nome} - {self.nivel}%"
     
-
+#classe das habilidades ferramentas e sofwares
 class Skill_2(models.Model):
     nome = models.CharField(max_length=100)
     nivel = models.IntegerField(help_text="Nível de 0 a 100")
@@ -39,7 +41,7 @@ class Skill_2(models.Model):
     def __str__(self):
         return f"{self.nome} - {self.nivel}%"
     
-
+#class das tecnologias que tem relacionamento com Projeto 
 class Tecnologia(models.Model):
     nome = models.CharField(max_length=50)
     icone = models.CharField(
@@ -50,7 +52,7 @@ class Tecnologia(models.Model):
     def __str__(self):
         return self.nome
     
-
+#Classe dos projetos 
 class Projeto(models.Model):
     titulo = models.CharField(max_length=200)
     descricao = models.TextField()
@@ -64,4 +66,12 @@ class Projeto(models.Model):
     class Meta:
         ordering = ['ordem']
 
+#Classe dos contatos 
+class Contato(models.Model):
+    nome = models.CharField(max_length=100)
+    email = models.EmailField()
+    mensagem = models.TextField()
+    enviado_em = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.nome

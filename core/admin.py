@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Skill, Skill_2, Projeto, Tecnologia
+from .models import Skill, Skill_2, Projeto, Tecnologia, Contato
 
 # Register your models here.
 @admin.register(Skill)
@@ -23,3 +23,9 @@ class ProjetoAdmin(admin.ModelAdmin):
 @admin.register(Tecnologia)
 class TecnologiaAdmin(admin.ModelAdmin):
     list_display = ['nome', 'icone']
+
+@admin.register(Contato)
+class ContatoAdmin(admin.ModelAdmin):
+    list_display = ['nome', 'email', 'enviado_em']
+    list_filter = ('enviado_em',)
+    search_fields = ('nome', 'email')

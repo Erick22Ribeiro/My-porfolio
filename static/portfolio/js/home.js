@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
 /* botão menu hamburguer */
 function animar() {
     document.querySelector('.btn-hamburguer')
@@ -39,6 +38,36 @@ function animar() {
     document.querySelector('.opcoes-hamburguer')
         .classList.toggle('ativar');
 }
+
+const btnHamb = document.getElementById('menu-hamb');
+const menu = document.querySelector('.opcoes-hamburguer');
+const container = document.querySelector('.btn-hamburguer');
+
+btnHamb.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+
+    container.classList.toggle('ativar');
+    btnHamb.classList.toggle('ativar');
+    menu.classList.toggle('ativar');
+});
+
+
+document.addEventListener('click', (e) => { /* para fechar o menu ao clicar fora */
+    if (!container.contains(e.target)) {
+        container.classList.remove('ativar');
+        btnHamb.classList.remove('ativar');
+        menu.classList.remove('ativar');
+    }
+});
+
+menu.querySelectorAll('a').forEach(link => {  /* fechar ao clicar em algum link do menu */
+    link.addEventListener('click', () => {
+        container.classList.remove('ativar');
+        btnHamb.classList.remove('ativar');
+        menu.classList.remove('ativar');
+    });
+});
+
 
 /* Texto dinamico */
 const textos = ["estudante de sistemas de informação", "desenvolvedor de software"];
@@ -93,6 +122,49 @@ if (header) {
             header.classList.remove("scrolled");
         }
     });
+}
+
+
+/* fetch */
+const form = document.querySelector(".form-contato");
+
+form.addEventListener("submit", function (event) {
+
+    event.preventDefault(); /* intercepta o submit */
+
+    const formData = new FormData(form);
+
+    fetch("", {
+        method: "POST",
+        body: formData,
+        headers: {
+            "X-CSRFToken": form.querySelector('[name=csrfmiddlewaretoken]').value
+        }
+    })
+    
+    .then(response => response.json())
+    .then(data => {
+        console.log("Resposta:", data);
+
+        if (data.status === "ok") {
+            mostrarOverlay();
+            form.reset();
+        }
+    })
+    .catch(error => {
+        console.error(error);
+        alert("Erro ao enviar");
+    });
+});
+
+/* função para mostrar a mensagem de sucesso */
+function mostrarOverlay(){
+    const toast = document.querySelector(".form-overlay");
+    toast.classList.add("ativo");
+
+    setTimeout(() => {
+        toast.classList.remove("ativo"); 
+    }, 3000);
 }
 
 

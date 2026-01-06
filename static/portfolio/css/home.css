@@ -79,7 +79,6 @@ button.menu-hamburguer:hover {
     position: relative;
     transform-origin: center;
 
-
     transition: 0.2s;
 }
 
@@ -115,16 +114,16 @@ button.ativar .linha:nth-child(2) {
     transform: translateX(-50%) translateY(-20px); /* pra deixar alinhado no meio do botão */
     padding: 10px;
     width: 200px;
-    height: 200px;
     border-radius: 15px;
     z-index: 9999;
     text-align: center;
+    align-items: center;
 
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85);
-    border: 1px solid #3ba5a5;
+    border-bottom: 1px solid #3ba5a5;
 
     /* Animação */
     opacity: 0;
@@ -141,7 +140,8 @@ button.ativar .linha:nth-child(2) {
 }
 
 .opcoes-hamburguer ul li {
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 /* procura a classe interface dentro de header */
@@ -186,15 +186,10 @@ header {
     position: fixed;
     top: 0;   /* deixa o header colado no topo inicialmente */
 
-    /* left: 50%;
-    transform: translateX(-50%);
-    width: 100%; */
-
     left: 0;
     right: 0;
     margin: 0 auto;
     width: 100%;
-
 
     transition: 
         width 0.4s ease,
@@ -278,14 +273,14 @@ section.topo .flex {
 }
 
 .topo button {
-    padding: 10px 30px;
+    margin: 5px 5px;
+    padding: 10px 15px;
     font-size: 18px;
-    font-weight: 500;
-    background-color: #3CA6A6;
+    font-weight: 400;
+    background-color: #3ca6a6;
     border: 0;
-    border-radius: 15px;
+    border-radius: 10px;
     cursor: pointer;
-
 
     transition: 0.5s;
 }
@@ -482,6 +477,7 @@ section.projetos .interface{
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    
     transition: transform 0.5s ease;
 
     display: flex;
@@ -625,51 +621,208 @@ section.projetos .interface{
 /*  ----------------------------------------------------- */
 
 /* contato */
-section.contato{
+section.contato {
     padding: 180px 5%;
 }
-section.contato h1{
-      text-align: center;
+
+section.contato h1 {
+    text-align: center;
 }
-section.contato form{
-    max-width: 500px;
-    margin: 0 auto;
+
+/* ---------- ÁREA PRINCIPAL ---------- */
+
+section.contato .flex{
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-
+    align-items: center;
 }
 
-section.contato form input, section.contato form textarea{
+/* ---------- FORMULÁRIO ---------- */
+
+section.contato .contato-form {
+    width: 600px;
+    height: 500px;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-top-left-radius: 30px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.16),
+        rgba(255, 255, 255, 0.04)
+    );
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+section.contato .contato-form h3 {
+    margin-bottom: 25px;
+}
+
+section.contato form {
+    width: 70%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+section.contato form input,
+section.contato form textarea {
     width: 100%;
-    padding: 20px 25px;
+    padding: 15px 25px;
 
     border: none;
     outline: none;
-    color: white;
-    border-radius: 15px;
-    font-size: 18px;
+    border-radius: 10px;
 
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85);
+    font-size: 18px;
+    color: #fff;
+
+    background: linear-gradient(
+        180deg,
+        rgba(156, 156, 156, 0.3),
+        rgba(136, 136, 136, 0.12)
+    );
 
 }
-section.contato form textarea{
+
+section.contato form textarea {
     resize: none;
     height: 200px;
 }
 
-section.contato form .btn-enviar{
-    margin-top: 30px;
+input::placeholder,
+textarea::placeholder {
+    color: #fff;
 }
 
+/* ---------- BOTÃO ---------- */
 
+section.contato form .btn-enviar {
+    margin-top: 15px;
+    text-align: center;
+}
 
+section.contato form .btn-enviar input {
+    width: 110px;
 
+    background-color: #3ba5a5;
+    color: #000;
+    font-weight: 500;
+    cursor: pointer;
 
+    transition: 0.5s;
+}
+
+section.contato form .btn-enviar input:hover {
+    box-shadow: 0 0 8px #3CA6A6;
+    transform: scale(1.05);
+}
+
+/* ---------- REDES SOCIAIS ---------- */
+
+section.contato .contato-redes {
+    width: 600px;
+    height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-bottom-right-radius: 30px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.30),
+        rgba(255, 255, 255, 0.12)
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+section.contato .contato-redes i {
+    font-size: 35px;
+    cursor: pointer;
+}
+
+section.contato .h3-redes {
+    padding-bottom: 25px;
+}
+
+/* ---------- ÍCONES E TEXTOS ---------- */
+
+.text-icones {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* gap: 10px; */
+    text-align: center;
+}
+
+.text-icones p {
+    text-align: left;
+}
+
+.text-icones a{
+    color: white;
+
+    transition: 0.4s ease;
+}
+.text-icones a:hover{
+    transform: scale(1.09);
+}
+
+.container-redes,
+.container-email {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.p-1{
+    margin-bottom: 12px;
+}
+
+/* Overlay mensagem de sucesso */
+.form-overlay{
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    border-top-left-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity .7s ease;
+}
+
+.form-overlay.ativo {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.overlay-content {
+    background: #20c464;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+}
 /* --------------------------------------------------------------- */
 
 /* footer */
@@ -721,6 +874,7 @@ footer .line-footer p a {
         width: 300px;          /*  diminui o card  */
     }
 }
+
 @media screen and (max-width: 1460px) {
     .opcoes-hamburguer {
         left: auto;
@@ -736,8 +890,14 @@ footer .line-footer p a {
     }
 }
 
-@media screen and (max-width: 855px) {
+@media screen and (max-width: 665px) {
+    section.contato .contato-form, section.contato .contato-redes {
+        width: 350px;
+    }
+  
+}
 
+@media screen and (max-width: 855px) {
     /* classes gerais */
     .flex {
         flex-direction: column;
@@ -775,6 +935,11 @@ footer .line-footer p a {
     /* Projetos */
 
 
+
+    /* contato */
+
+
+
     /* footer */
     footer .flex {
         align-items: center;
@@ -785,8 +950,6 @@ footer .line-footer p a {
     }
 
 }
-
-
 
 
 
