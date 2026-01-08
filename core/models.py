@@ -10,10 +10,11 @@ class Skill(models.Model):
     ordem = models.IntegerField(default=0, help_text="Ordem de exibição")
 
     icone = models.CharField(
-        max_length=60,
-        default='fa-solid fa-code',
-        help_text="Classe do ícone (ex: fa-brands fa-python, devicon-java-plain)"
+        max_length=255,
+        default='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/code/code-original.svg',
+        help_text="URL do ícone (SVG/PNG)"
     )
+
     class Meta:
         ordering = ['-nivel', 'ordem']  # Ordena por nível (maior primeiro), e ignora a ordem, se eu quero uma ordem específica é só remover o '-nivel'
 
@@ -29,9 +30,9 @@ class Skill_2(models.Model):
     ordem = models.IntegerField(default=0, help_text="Ordem de exibição")
 
     icone = models.CharField(
-        max_length=60,
-        default='fa-solid fa-code',
-        help_text="Classe do ícone (ex: fa-brands fa-python, devicon-java-plain)"
+        max_length=255,
+        default='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/code/code-original.svg',
+        help_text="URL do ícone (SVG/PNG)"
     )
 
     class Meta:
@@ -45,9 +46,10 @@ class Skill_2(models.Model):
 class Tecnologia(models.Model):
     nome = models.CharField(max_length=50)
     icone = models.CharField(
-        max_length=50, 
-        default='fa-solid fa-code',
-        help_text="Classe do ícone (ex: fa-brands fa-python, devicon-java-plain)")
+        max_length=255, 
+        default='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/code/code-original.svg',
+        help_text="URL do ícone (SVG/PNG)"
+    )
 
     def __str__(self):
         return self.nome

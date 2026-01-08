@@ -315,28 +315,28 @@ section.habilidades {
 
 .habilidades h1 {
     text-align: center;
-    /* margin-bottom: 10px; */
     font-weight: bold;
 }
 
 /* Layout principal */
 section.habilidades .flex {
     display: flex;
-    flex-wrap: wrap;
-    /* pra fazer o grafico descer */
+    /* flex-wrap: wrap; */
+    align-items: center;
     gap: 15%;
+
+    flex-wrap: nowrap;
 }
 
 /* Bloco (linguagens / ferramentas) */
 .habilidades-bloco {
     display: flex;
     flex-direction: column;
-
 }
 
-.habilidades-titulo {
-    margin-bottom: 40px;
-    font-size: 1.2em;
+.habilidades-titulo{
+    margin: 30px 0;
+    font-size: 20px;
 }
 
 /* Container das skills */
@@ -385,27 +385,52 @@ section.habilidades .flex {
 }
 
 /* Ícones */
-.skill-icon {
-    font-size: 30px;
-    width: 32px;
-    /* força largura fixa */
-    text-align: center;
-    /* centraliza o ícone dentro */
-    flex-shrink: 0;
-    /* impede o flex de encolher */
+.skill-icon{
+    width: 30px;
+    height: 30px;
+    /* object-fit: contain; */
 }
 
 /* Gráfico */
 .skills-chart {
     width: 250px;
     height: 250px;
-    margin-top: 10%;
+    /* margin-top: 40px; */
     align-self: center;
 }
 
-section.habilidades p {
-    margin-top: 40px;
+/* feito com */
+.feito-com {
+    display: flex;
+    flex-direction: column; /* empilha p e ícones */
+    gap: 12px;              /* espaço ENTRE o p e os ícones */
 }
+
+.feito-com p {
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+}
+
+.container-icones-usados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;              /* espaço ENTRE os ícones */
+}
+
+.container-icones-usados img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    transition: transform .3s ease, opacity .3s ease;
+}
+.container-icones-usados img:hover {
+    transform: translateY(-6px);
+    opacity: .85;
+}
+
+
 
 /* -------------------------------------------------------------- */
 
@@ -441,6 +466,68 @@ section.sobre .flex {
     transform: scale(1.05);
     box-shadow: 0px 0px 8px #3CA6A6;
 }
+
+.img-sobre{
+    display: flex;
+    justify-content: center;
+}
+
+/* barras de idioma */
+ .container-idiomas {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 50px;
+}
+
+.container-idiomas h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.idioma {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* margin-bottom: 5px; */
+}
+
+.idioma .nome {
+    width: 90px;
+    text-align: right;
+}
+
+.idioma .nivel {
+    width: 90px;
+    text-align: left;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.barra-idioma {
+    flex: 1;
+    width: 140px;
+    height: 8px;
+    background-color: #2e2e2e;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progresso-idioma {
+    height: 100%;
+    background-color: #3CA6A6;
+    border-radius: 20px;
+}
+
+/* níveis */
+.pt {
+    width: 100%;
+}
+
+.ing {
+    width: 60%;
+}
+
+
 
 /* -------------------------------------------------------------------- */
 
@@ -568,11 +655,16 @@ section.projetos .interface{
     align-items: center;
     gap: 5px;
     background-color: #3ca6a646;
-    padding: 4px 8px;
+    padding: 10px 8px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 500;
-    height: 27px; /* altura do span */
+    height: 30px; /* altura do span */
+}
+
+.img-icon-proj{
+    width: 25px;
+    height: 25px;
 }
 
 /* ===================================================== LINKS / BOTÕES ===================================================== */
@@ -581,7 +673,7 @@ section.projetos .interface{
     display: flex;
     justify-content: center;
     gap: 5px;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
 .btn-projeto {
@@ -845,7 +937,7 @@ footer button {
 }
 
 footer .btn-social button:hover {
-    transform: scale(1.2);
+    transform: scale(1.08);
 }
 
 footer .btn-social {
@@ -861,20 +953,57 @@ footer i {
     color: rgb(99, 99, 99);
 }
 
-footer .line-footer p a {
+footer .line-footer p a{
     color: white;
     text-decoration: none;
 }
 
+#footer-p-email {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
 /* ----------------------------------------------------------- */
 
 /* responsividade */
+
+/* PROJETOS */
 @media screen and (max-width: 520px) {
     .projeto-card{
         width: 300px;          /*  diminui o card  */
     }
 }
 
+/* HABILIDADES */
+@media (max-width: 1230px) {
+    section.habilidades .flex {
+        gap: 0;
+    }
+}
+
+@media (max-width: 950px) {
+    section.habilidades .flex {
+        flex-wrap: wrap;
+    }
+    section.habilidades .skills-chart{
+        margin-top: 50px;
+    }
+    section.habilidades .feito-com{
+        margin-top: 50px;
+    }
+
+}
+
+@media (max-width: 1110px) {
+    .skill-bar {
+        width: 400px;
+    }
+}
+
+/* HEADER */
 @media screen and (max-width: 1460px) {
     .opcoes-hamburguer {
         left: auto;
@@ -890,6 +1019,7 @@ footer .line-footer p a {
     }
 }
 
+/* CONTATO */
 @media screen and (max-width: 665px) {
     section.contato .contato-form, section.contato .contato-redes {
         width: 350px;
@@ -897,6 +1027,7 @@ footer .line-footer p a {
   
 }
 
+/* GERAL */
 @media screen and (max-width: 855px) {
     /* classes gerais */
     .flex {
@@ -926,6 +1057,10 @@ footer .line-footer p a {
     .skill-bar {
         width: 250px;
     }
+    
+    .habilidades-titulo{
+        text-align: center;
+    }
 
     /* sobre */
     .sobre .txt-sobre {
@@ -944,9 +1079,8 @@ footer .line-footer p a {
     footer .flex {
         align-items: center;
     }
-
-    footer .line-footer {
-        text-align: center;
+    #footer-p-email {
+        justify-content: center;
     }
 
 }

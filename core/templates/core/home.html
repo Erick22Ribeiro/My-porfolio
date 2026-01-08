@@ -80,7 +80,7 @@
                     <div class="txt-topo">
 
                         <h1>Olá, meu nome é Erick Ribeiro<span>.</span></h1>
-                        
+
                         <div class="container-texto-dinamixo">
                             <span class="texto-fixo">Eu sou</span>
                             <span class="texto-dinamico">
@@ -88,7 +88,7 @@
                             </span>
                         </div>
 
-                            
+
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
                             been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
                             galley of type and scrambled it to make a type specimen book.</p>
@@ -115,58 +115,79 @@
             <div class="interface">
                 <h1>Minhas Habilidades</h1>
 
+                <p class="habilidades-titulo">Linguagens e frameworks</p>
                 <div class="flex">
 
                     <!-- LINGUAGENS -->
                     <div class="habilidades-bloco">
-                        <p class="habilidades-titulo">Linguagens e frameworks</p>
+
+                        <!-- <p class="habilidades-titulo">Linguagens e frameworks</p> -->
+
+                            <div class="skills-container">
+                                {% for skill in skills %}
+                                <div class="skill-item">
+
+                                    <!-- <i class="{{ skill.icone }} skill-icon"></i> -->
+                                     <img src="{{ skill.icone }}" alt="{{ skill.nome }}" class="skill-icon">
+
+                                    <span class="skill-name">{{ skill.nome }}</span>
+
+                                    <div class="skill-bar">
+                                        <div class="skill-progress"style="width: {{ skill.nivel }}%; background-color: {{ skill.cor }};">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                    </div>
+
+                    <!-- GRÁFICO -->
+                            <div class="skills-chart">
+                                <canvas id="skillsChart" data-labels='{{ skills_labels|safe }}'
+                                    data-values='{{ skills_values|safe }}' data-colors='{{ skills_colors|safe }}'>
+                                </canvas>
+                            </div>
+
+                </div>
+
+                <p class="habilidades-titulo">Ferramentas e softwares</p>
+                <div class="flex">
+
+                    <!-- FERRAMENTAS -->
+                    <div class="habilidades-bloco">
+                        <!-- <p class="habilidades-titulo">Ferramentas e softwares</p> -->
 
                         <div class="skills-container">
-                            {% for skill in skills %}
+                            {% for skill2 in skills2 %}
                             <div class="skill-item">
-                             
-                                    <i class="{{ skill.icone }} skill-icon"></i>
-                
-                                <span class="skill-name">{{ skill.nome }}</span>
+                                <!-- <i class="{{ skill2.icone }} skill-icon"></i> -->
+                                 <img src="{{ skill2.icone }}" alt="skill2.nome" class="skill-icon">
+                                <span class="skill-name">{{ skill2.nome }}</span>
 
                                 <div class="skill-bar">
-                                    <div class="skill-progress"style="width: {{ skill.nivel }}%; background-color: {{ skill.cor }};">
+                                    <div class="skill-progress"style="width: {{ skill2.nivel }}%; background-color: {{ skill2.cor }};">
                                     </div>
                                 </div>
                             </div>
                             {% endfor %}
-
-
                         </div>
                     </div>
 
-                    <!-- GRÁFICO -->
-                    <div class="skills-chart">
-                        <canvas id="skillsChart" data-labels='{{ skills_labels|safe }}'
-                            data-values='{{ skills_values|safe }}' data-colors='{{ skills_colors|safe }}'>
-                        </canvas>
-                    </div>
+                    <div class="feito-com">
+                        <p>Este portfolio foi criado usando</p>
 
-
-                </div>
-
-                <!-- FERRAMENTAS -->
-                <div class="habilidades-bloco">
-                    <p class="habilidades-titulo">Ferramentas e softwares</p>
-
-                    <div class="skills-container">
-                        {% for skill2 in skills2 %}
-                        <div class="skill-item">
-                            <i class="{{ skill2.icone }} skill-icon"></i>
-                            <span class="skill-name">{{ skill2.nome }}</span>
-
-                            <div class="skill-bar">
-                                <div class="skill-progress"style="width: {{ skill2.nivel }}%; background-color: {{ skill2.cor }};">
-                                </div>
-                            </div>
+                        <div class="container-icones-usados">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
                         </div>
-                        {% endfor %}
                     </div>
+
                 </div>
 
             </div>
@@ -177,8 +198,33 @@
             <div class="interface">
                 <div class="flex">
 
-                    <div class="img-sobre">
-                        <img src="static/portfolio/images/pessoa.png" alt="">
+                    <div>
+                        <div class="img-sobre">
+                            <img src="static/portfolio/images/pessoa.png" alt="">
+                        </div>
+
+                        <div class="container-idiomas">
+
+                            <h2>Idiomas</h2>
+
+                            <div class="idioma">
+                                <span class="nome">Português</span>
+                                <div class="barra-idioma">
+                                    <div class="progresso-idioma pt"></div>
+                                </div>
+                                <span class="nivel">Nativo</span>
+                            </div>
+
+                            <div class="idioma">
+                                <span class="nome">Inglês</span>
+                                <div class="barra-idioma">
+                                    <div class="progresso-idioma ing"></div>
+                                </div>
+                                <span class="nivel">Intermediário</span>
+                            </div>
+
+                        </div>
+
                     </div>
 
                     <div class="txt-sobre">
@@ -213,8 +259,7 @@
                     {% for projeto in projetos %}
                     <div class="projeto-card">
 
-                        <div class="projeto-imagem" 
-                            style="background-image: url('{{ projeto.imagem.url }}');">
+                        <div class="projeto-imagem" style="background-image: url('{{ projeto.imagem.url }}');">
                             <i class="bi bi-box-arrow-up-right"></i>
                         </div>
 
@@ -224,12 +269,13 @@
 
                             <div class="container-tecnologias">
                                 {% for tech in projeto.tecnologias.all %}
-                                    <span class="tools-area">
-                                        <i class="{{ tech.icone }}"></i> 
-                                        {{ tech.nome }}
-                                    </span>       
+                                <span class="tools-area">
+                                    <!-- <i class="{{ tech.icone }}"></i> -->
+                                     <img src="{{ tech.icone }}" alt="" class="img-icon-proj">
+                                    {{ tech.nome }}
+                                </span>
                                 {% empty %}
-                                    <span class="tech">Sem tecnologias</span>
+                                <span class="tech">Sem tecnologias</span>
                                 {% endfor %}
                             </div>
 
@@ -246,24 +292,24 @@
                             </div>
 
                         </div>
-                    
+
                     </div>
 
-                
+
 
                     {% empty %}
-                        <p>Nenhum projeto cadastrado ainda</p>
+                    <p>Nenhum projeto cadastrado ainda</p>
                     {% endfor %}
                 </div>
 
             </div>
-        
+
         </section>
         <!-- Fim projetos -->
 
         <section class="contato" id="contato">
             <div class="interface">
-             
+
                 <h1>Fale comigo.</h1>
 
                 <div class="flex">
@@ -297,19 +343,21 @@
                             <div class="container-redes">
                                 <p>através das <br> minhas redes sociais</p>
                                 <a href="" target="_blank"><i class="bi bi-whatsapp"></i></a>
-                                <a href="" target="_blank"><i class="bi bi-linkedin"></i></a>
-                                <a href="" target="_blank"><i class="bi bi-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/erick-ribeiro-907a8432b/" target="_blank"><i
+                                        class="bi bi-linkedin"></i></a>
+                                <a href="https://www.instagram.com/erickk_ribeiro/" target="_blank"><i
+                                        class="bi bi-instagram"></i></a>
                             </div>
 
                             <div class="container-email">
                                 <p>ou e-mail</p>
-                                <a href=""><i class="bi bi-envelope-fill"></i></a>
-                                
-                                
+                                <a href="mailto:erick2ribeirogg@gmail.com"><i class="bi bi-envelope-fill"></i></a>
+
+
                             </div>
 
                         </div>
-                                              
+
                         <div class="h3-redes">
                             <h3>Outros.</h3>
                         </div>
@@ -318,7 +366,7 @@
 
                 </div>
 
-            </div> 
+            </div>
 
         </section>
         <!-- fim contato -->
@@ -334,16 +382,19 @@
                     </div>
 
                     <div class="btn-social">
-                        <a href="#"><button><i class="bi bi-instagram"></i></button></a>
-                        <a href="#"><button><i class="bi bi-linkedin"></i></button></a>
+                        <a href="https://www.instagram.com/erickk_ribeiro/" target="_blank"><button><i
+                                    class="bi bi-instagram"></i></button></a>
+                        <a href="https://www.linkedin.com/in/erick-ribeiro-907a8432b/" target="_blank"><button><i
+                                    class="bi bi-linkedin"></i></button></a>
                         <a href="https://github.com/Erick22Ribeiro" target="_blank" rel="noopener noreferrer"><button><i
                                     class="bi bi-github"></i></button></a>
                     </div>
                 </div>
 
             </div>
+
             <div class="line-footer">
-                <p><i class="bi bi-envelope-fill"></i> <a
+                <p id="footer-p-email"><i class="bi bi-envelope-fill"></i> <a
                         href="mailto:erick2ribeirogg@gmail.com">erick2ribeirogg@gmail.com</a></p>
             </div>
         </div>
