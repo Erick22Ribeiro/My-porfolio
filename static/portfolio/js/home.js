@@ -1,3 +1,5 @@
+/* código js antes da otimização*/
+
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('skillsChart');
     if (!canvas) return;
@@ -43,12 +45,15 @@ const btnHamb = document.getElementById('menu-hamb');
 const menu = document.querySelector('.opcoes-hamburguer');
 const container = document.querySelector('.btn-hamburguer');
 
+
 btnHamb.addEventListener('click', (e) => {
+
     e.stopPropagation(); 
 
     container.classList.toggle('ativar');
     btnHamb.classList.toggle('ativar');
     menu.classList.toggle('ativar');
+
 });
 
 
@@ -70,7 +75,21 @@ menu.querySelectorAll('a').forEach(link => {  /* fechar ao clicar em algum link 
 
 
 /* Texto dinamico */
-const textos = ["estudante de sistemas de informação", "desenvolvedor de software"];
+const textosPorIdioma = {
+    pt: [
+        "estudante de sistemas de informação",
+        "desenvolvedor backend"
+    ],
+    en: [
+        "information systems student",
+        "backend developer"
+    ]
+};
+
+let idiomaAtual = localStorage.getItem("lang") || "pt";
+
+let textos = textosPorIdioma[idiomaAtual];
+
 const velocidadeDigitacao = 100; // velocidade da digitação
 const velocidadeApagar = 50;   // velocidade de apagar
 const delayApagar = 1500;       // pausa antes de apagar
@@ -90,47 +109,70 @@ function type() {
 
         if (charIndex === current.length) {
             isDeleting = true;
-            setTimeout(type, delayApagar);
+            typingTimeout = setTimeout(type, delayApagar);
         } else {
-            setTimeout(type, velocidadeDigitacao);
+            typingTimeout = setTimeout(type, velocidadeDigitacao);
         }
-    } else {
+
+    } 
+    else {
         textoAnimado.textContent = current.substring(0, charIndex - 1);
         charIndex--;
 
         if (charIndex === 0) {
             isDeleting = false;
             textIndex = (textIndex + 1) % textos.length;
-            setTimeout(type, velocidadeDigitacao);
+            typingTimeout = setTimeout(type, velocidadeDigitacao);
         } else {
-            setTimeout(type, velocidadeApagar);
+            typingTimeout = setTimeout(type, velocidadeApagar);
         }
     }
 }
 
+let typingTimeout;
+
 type();
+
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        clearTimeout(typingTimeout);
+    } else {
+        type();
+    }
+});
+
 
 
 /* Header animado */
 const header = document.getElementById("header");
 
-if (header) {
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-            header.classList.add("scrolled");
-        } else {
-            header.classList.remove("scrolled");
-        }
-    });
-}
+let headerAtivo = false;
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50 && !headerAtivo) {
+        header.classList.add("scrolled");
+        headerAtivo = true;
+    } 
+    else if (window.scrollY <= 50 && headerAtivo) {
+        header.classList.remove("scrolled");
+        headerAtivo = false;
+    }
+});
+
 
 
 /* fetch */
-const form = document.querySelector(".form-contato");
+const form = document.querySelector(".form-contato"); /* Desativar o botão + animação enviando */
+const btnEnviar = document.querySelector('.btn-enviar');
+const enviarText = document.querySelector('.text-enviar');
 
 form.addEventListener("submit", function (event) {
 
     event.preventDefault(); /* intercepta o submit */
+
+    btnEnviar.disabled = true;
+    btnEnviar.classList.add("loading");
+    enviarText.classList.add("remover-text") /* remove o texto do btn */
 
     const formData = new FormData(form);
 
@@ -149,11 +191,19 @@ form.addEventListener("submit", function (event) {
         if (data.status === "ok") {
             mostrarOverlay();
             form.reset();
+
+            btnEnviar.disabled = false;
+            btnEnviar.classList.remove("loading");
+            enviarText.classList.remove("remover-text") /* adiciona novamente o texto do btn */
         }
     })
     .catch(error => {
         console.error(error);
         alert("Erro ao enviar");
+
+        btnEnviar.disabled = false;
+        btnEnviar.classList.remove("loading");
+        enviarText.classList.remove("remover-text") /* adiciona novamente o texto do btn */
     });
 });
 
@@ -166,5 +216,106 @@ function mostrarOverlay(){
         toast.classList.remove("ativo"); 
     }, 3000);
 }
+
+
+
+
+/* TRADUÇãO */
+function toggleLanguage() {
+    const currentLang = document.documentElement.lang || "pt";
+    const newLang = currentLang === "pt" ? "en" : "pt";
+    setLanguage(newLang);
+}
+
+
+const translationsCache = {};
+
+async function setLanguage(lang) {
+    // Busca traduções do Django
+    let data;
+
+    if (translationsCache[lang]) {
+        data = translationsCache[lang];
+    } 
+    else {
+        const response = await fetch(`/?translations=true&lang=${lang}`);
+        data = await response.json();
+        translationsCache[lang] = data;
+    }
+
+    
+    /* console.log('Dados recebidos:', data); */ /* pra mostrar os objetos recebidos no console(debug) */
+    
+    // Traduz textos estáticos (menu, topo, hab, sobre)
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+
+        const keys = el.dataset.i18n.split(".");
+        let text = data.static;
+        
+        keys.forEach(k => { /* k = key, nome da variável que representa cada parte do caminho */
+            text = text?.[k];
+        });
+        
+        if (text) {
+            el.textContent = text;
+        }
+
+    });
+
+    //Traduz placeholders
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+        const keys = el.dataset.i18nPlaceholder.split("."); /* split separa a string em várias partes, pega o valores e divide removendo o . / topo.ola = ["topo", "ola"] */
+        let text = data.static;
+        
+        keys.forEach(k => { 
+            text = text?.[k];
+        });
+        
+        if (text) {
+            el.setAttribute('placeholder', text);  // Usa setAttribute em vez de textContent
+        }
+    });
+    
+    // Traduz projetos dinâmicos
+    data.projetos.forEach(projeto => {
+
+        /* busca o card do projeto no html */
+        const projetoEl = document.querySelector(`[data-projeto-id="${projeto.id}"]`);
+        
+        if (projetoEl) {
+            const tituloEl = projetoEl.querySelector('.titulo');
+            const descricaoEl = projetoEl.querySelector('.descricao');
+            
+            if (tituloEl) tituloEl.textContent = projeto.titulo;
+            if (descricaoEl) descricaoEl.textContent = projeto.descricao;
+        }
+    });
+
+    document.documentElement.lang = lang;
+    localStorage.setItem("lang", lang);
+    
+    // Atualiza textos da animação
+    idiomaAtual = lang;
+    textos = textosPorIdioma[lang];
+    
+    // Reset animação
+    textIndex = 0;
+    charIndex = 0;
+    isDeleting = false;
+
+    /* btn idioma */
+    ["btn-lang", "btn-lang-mobile"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) {
+        btn.classList.toggle("en", lang === "en");
+    }
+    });
+
+
+}
+
+// Carrega idioma salvo, ao abrir vai estar no idioma definido antes
+const savedLang = localStorage.getItem("lang") || "pt";
+setLanguage(savedLang);
 
 

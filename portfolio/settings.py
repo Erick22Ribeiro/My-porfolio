@@ -31,7 +31,11 @@ SECRET_KEY = 'django-insecure-(h!q6yd8!+_@p=r3h!p(ynibzs-k4=##9rfl4@-fl4i3jpc*vu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#ip: 192.168.200.111
 ALLOWED_HOSTS = []
+""" ALLOWED_HOSTS = ['*'] """
+""" ALLOWED_HOSTS = ['192.168.200.106'] """
+
 
 #Configurar recebimento de emails
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -60,6 +64,9 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+
+    'django.middleware.locale.LocaleMiddleware',  # pra trocar idioma
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -120,7 +127,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt'
+
+#para mudar o idioma
+USE_I18N = True
+
+LANGUAGES = [
+    ("pt", "Português"),
+    ("en", "English"),
+]
 
 TIME_ZONE = 'UTC'
 

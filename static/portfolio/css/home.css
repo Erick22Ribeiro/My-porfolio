@@ -1,5 +1,6 @@
-/*  Estilo geral */
-
+/* ===================================================== 
+                    ESTILO GERAL
+===================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -16,7 +17,7 @@ body {
     min-height: 100vh;
     color: rgb(255, 255, 255);
 
-    padding-top: 110px;/*  após mexer no header para animar o scrol, a paginma ficou meio cortada, adicionei isso para compensar */
+    padding-top: 100px;/*  após mexer no header para animar o scrol, a paginma ficou meio cortada, adicionei isso para compensar */
 }
 
 /* esta classe serve para delimitar a área dos itens da página */
@@ -40,22 +41,29 @@ section h1 {
     margin-bottom: 30px;
 }
 
-.img-logo-p {
-    width: 100px;
-    height: 100px;
-}
-
 section {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 80px;
     /* pra dar uma alinhada na gora de clicar no click e levar pra sessao */
 }
+/* =====================================================  */
 
-/* fim estilo geral */
+/* ===================================================== 
+                    CABEÇALHO
+===================================================== */
 
-/* ------------------------------------------------------------------ */
-
-/* Estilo do cabeçalho */
 /* botão hamburguer */
+
+.logo a{
+    display: flex;
+    align-items: center;
+}
+
+header .img-logo-topo {
+   width: 90px;
+   height: 90px;
+   object-fit: cover;
+}
+
 button.menu-hamburguer {
     width: 30px;
     height: 30px;
@@ -64,6 +72,8 @@ button.menu-hamburguer {
     cursor: pointer;
 
     transition: 1s;
+
+    /* display: none; */ /* pra deixar sem menu no pc */
 }
 
 button.menu-hamburguer:hover {
@@ -97,16 +107,16 @@ button.ativar .linha:nth-child(2) {
 }
 
 .btn-hamburguer {
-    padding: 5px 10px;
-    /* deixa afastado da lateral */
+    padding: 5px 10px; /* deixa afastado da lateral */
+    display: none;
 }
 
 /* estilo menu hamburguer */
 .btn-hamburguer {
-    position: relative;
-    /* aqui precisa ser relative e nas opções precisa ser obsolute, pra ele saber a referencia de onde se alinhas */
+    position: relative; /* aqui precisa ser relative e nas opções precisa ser obsolute, pra ele saber a referencia de onde se alinhar */
 }
 
+/* caixa do menu */
 .opcoes-hamburguer {
     position: absolute; /* mostra que deve se alinhar com base no pai btn-hamgurguer que é relativo */
     top: 150%;/* logo abaixo do botão */
@@ -119,24 +129,22 @@ button.ativar .linha:nth-child(2) {
     text-align: center;
     align-items: center;
 
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
+    background: linear-gradient(180deg, rgb(75, 75, 75), rgb(0, 0, 0));
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.4);
     border-bottom: 1px solid #3ba5a5;
 
     /* Animação */
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s ease;
-
 }
 
 .opcoes-hamburguer.ativar {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
-    /* Desce para posição normal */
+    transform: translateX(-50%) translateY(0); /* Desce para posição normal */
 }
 
 .opcoes-hamburguer ul li {
@@ -190,13 +198,13 @@ header {
     right: 0;
     margin: 0 auto;
     width: 100%;
+    padding: 0 10px;
 
     transition: 
         width 0.4s ease,
         top 0.4s ease,
         border-radius 0.4s ease,
-        box-shadow 0.4s ease;
-
+        box-shadow 0.4s ease; 
 }
 
 header.scrolled {
@@ -206,9 +214,74 @@ header.scrolled {
     box-shadow: 0 10px 30px rgba(0,0,0,.4);
 }
 
-/* ----------------------------------------------------------------------- */
+/* Botão de idioma */
+.troca-idioma, .troca-idioma-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-/* estilo do topo */
+.lang-switch {
+    position: relative;
+    width: 40px;
+    height: 24px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+
+    background-image: url("/static/portfolio/images/br.png");
+    background-size: cover;
+    background-position: center;
+}
+
+/* camada da transição */
+.lang-switch::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/static/portfolio/images/us.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.lang-switch.en::before {
+    opacity: 1;
+}
+
+/* Bolinha */
+.lang-switch::after {
+    content: "PT";
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: rgba(0,0,0,.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: #fff;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.lang-switch.en::after {
+    content: "EN";
+    transform: translateX(14px);
+}
+
+/* =====================================================  */
+
+/* ===================================================== 
+                    TOPO
+===================================================== */
+
 section.topo {
     padding: 180px 5%;
 }
@@ -216,8 +289,7 @@ section.topo {
 section.topo .flex {
     align-items: center;
     justify-content: center;
-    gap: 200px;
-    /* distancia o texto da imagem */
+    gap: 200px; /* distancia o texto da imagem */
 }
 
 /* texto animado */
@@ -233,18 +305,22 @@ section.topo .flex {
 }
 .texto-dinamico {
     position: absolute;
-    left: 63px;            
+    left: 62px;            
     top: 0;
     width: 500px;         
     white-space: nowrap;
     overflow: hidden;
 }
+:lang(en) .texto-dinamico { /* ajuste fino para inglês */
+    left: 48px; 
+}
 
+/* barrinha que pisca */
 #texto-animado::after {
-    content: '|';               /* barrinha */
+    content: '|';           
     display: inline-block;
     margin-left: 2px;
-    animation: blink 1.2s infinite; /* animação de piscar */           
+    animation: blink 1.2s infinite;       
 }
 
 @keyframes blink {
@@ -253,23 +329,22 @@ section.topo .flex {
 }
 /* Fim texto animado */
 
-.topo .txt-topo h1 {
-    color: white;
+.titulo-topo .h1-topo {
     line-height: 35px;
-    font-weight: bold;
-    /* deixa o texto mais grosso */
+    font-weight: 600;
+}
+.titulo-topo {
+    line-height: 35px;
 }
 
 .topo .txt-topo p {
-    color: white;
     margin: 25px 0;
     font-size: 20px;
 }
 
-.topo .txt-topo h1 span {
+.topo span.ponto-topo {
     color: #3CA6A6;
-    font-weight: bold;
-    /* deixa o ponto final mais grosso */
+    font-weight: bold; /* deixa o ponto final mais grosso */
 }
 
 .topo button {
@@ -291,24 +366,24 @@ section.topo .flex {
 }
 
 .topo .img-topo img {
-    position: relative;
-    /* animação só funciona se setar um position */
-    animation: flutuar 3s ease-in-out infinite alternate;
+    width: 390px;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 15px;
+    border-right: 3px solid #3CA6A6;
+    border-bottom: 3px solid #3CA6A6;
 }
 
-@keyframes flutuar {
-    0% {
-        top: 0;
-    }
-
-    100% {
-        top: 30px;
-    }
+.span-txt-topo{
+    font-weight: 500;
 }
 
-/* -------------------------------------------------------------------- */
+/* ================================================================= */
 
-/* habilidades */
+/* ===================================================== 
+                    HABILIDADES
+===================================================== */
+
 section.habilidades {
     padding: 150px 5%;
 }
@@ -323,7 +398,7 @@ section.habilidades .flex {
     display: flex;
     /* flex-wrap: wrap; */
     align-items: center;
-    gap: 15%;
+    gap: 25%;
 
     flex-wrap: nowrap;
 }
@@ -346,7 +421,7 @@ section.habilidades .flex {
     gap: 10px;
 }
 
-/* Skill individual (PADRÃO ÚNICO) */
+/* Skill individual*/
 .skill-item {
     display: flex;
     align-items: center;
@@ -363,7 +438,7 @@ section.habilidades .flex {
 /* Barra */
 .skill-bar {
     /* flex: 1; */
-    width: 500px;
+    width: 400px;
     height: 30px;
     border-radius: 5px;
     background-color: transparent;
@@ -388,15 +463,17 @@ section.habilidades .flex {
 .skill-icon{
     width: 30px;
     height: 30px;
-    /* object-fit: contain; */
 }
 
 /* Gráfico */
 .skills-chart {
-    width: 250px;
-    height: 250px;
-    /* margin-top: 40px; */
+    width: 274px; /* pra deixar com a mesma largura da div feito-com */
+    height: 200px;
     align-self: center;
+
+    display: flex;
+    justify-content: center;
+
 }
 
 /* feito com */
@@ -407,6 +484,18 @@ section.habilidades .flex {
 }
 
 .feito-com p {
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+}
+/* leve gambirra pra aparecer outra div centralizada */
+.feito-com-2 {      
+    display: flex;
+    flex-direction: column; /* empilha p e ícones */
+    gap: 12px;              /* espaço ENTRE o p e os ícones */
+    opacity: 0;
+}
+.feito-com-2 p {
     text-align: center;
     margin: 0;
     font-size: 20px;
@@ -430,11 +519,12 @@ section.habilidades .flex {
     opacity: .85;
 }
 
+/* ================================================================= */
 
+/* ===================================================== 
+                    SOBRE
+===================================================== */
 
-/* -------------------------------------------------------------- */
-
-/* SOBRE */
 section.sobre {
     padding: 180px 5%;
 }
@@ -450,8 +540,8 @@ section.sobre .flex {
 }
 
 .sobre .txt-sobre .btn-social button {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     border-radius: 40%;
     border: none;
     background-color: #3CA6A6;
@@ -470,6 +560,16 @@ section.sobre .flex {
 .img-sobre{
     display: flex;
     justify-content: center;
+}
+.img-sobre img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-left: 3px solid #3CA6A6;
+    border-bottom: 3px solid #3CA6A6;
+    border-radius: 10px;
+
+    transition: .5s ease;
 }
 
 /* barras de idioma */
@@ -524,14 +624,14 @@ section.sobre .flex {
 }
 
 .ing {
-    width: 60%;
+    width: 70%;
 }
 
+/* ================================================================= */
+/* ===================================================== 
+                    PROJETOS
+===================================================== */
 
-
-/* -------------------------------------------------------------------- */
-
-/* PROJETOS */
 section.projetos {
     padding: 180px 20px;
 }
@@ -553,7 +653,7 @@ section.projetos .interface{
     max-width: 1400px;
 }
 
-/* ===================================================== CARD DO PROJETO ===================================================== */
+/* Card do projeto */
 .projeto-card {
     height: 450px;
     width: 420px;
@@ -575,7 +675,7 @@ section.projetos .interface{
     transform: scale(1.01);
 }
 
-/* ===================================================== IMAGEM DO PROJETO ===================================================== */
+/* imagem do projeto */
 .projeto-imagem {
     position: relative;
     height: 230px;
@@ -606,7 +706,7 @@ section.projetos .interface{
     background-position: center bottom;
 }
 
-/* ===================================================== INFORMAÇÕES DO PROJETO ===================================================== */
+/* informações do projeto */
 .projeto-info {
     padding: 20px 0;
     text-align: center;
@@ -628,11 +728,9 @@ section.projetos .interface{
 
     max-height: 30px;     /* limita a área visível */
     overflow-y: auto;     /* ativa scroll */
-
-    /* padding-right: 5px;  */  /* evita texto colar na scrollbar */
 }
 
-/* ===================================================== TECNOLOGIAS ===================================================== */
+/* tecnologias usadas */
 .container-tecnologias {
     display: flex;
     justify-content: center;
@@ -667,8 +765,7 @@ section.projetos .interface{
     height: 25px;
 }
 
-/* ===================================================== LINKS / BOTÕES ===================================================== */
-
+/* links / botões */
 .projeto-links {
     display: flex;
     justify-content: center;
@@ -710,9 +807,12 @@ section.projetos .interface{
     scrollbar-color: rgba(180, 180, 180, 0.24) transparent;
 }
 
-/*  ----------------------------------------------------- */
+/* =================================================================== */
 
-/* contato */
+/* ===================================================== 
+                    CONTATO
+===================================================== */
+
 section.contato {
     padding: 180px 5%;
 }
@@ -721,16 +821,14 @@ section.contato h1 {
     text-align: center;
 }
 
-/* ---------- ÁREA PRINCIPAL ---------- */
-
+/* área principal */
 section.contato .flex{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* ---------- FORMULÁRIO ---------- */
-
+/* formulário */
 section.contato .contato-form {
     width: 600px;
     height: 500px;
@@ -796,95 +894,68 @@ textarea::placeholder {
     color: #fff;
 }
 
-/* ---------- BOTÃO ---------- */
-
+/* Botão */
 section.contato form .btn-enviar {
     margin-top: 15px;
-    text-align: center;
-}
+    align-self: center;
 
-section.contato form .btn-enviar input {
     width: 110px;
-
-    background-color: #3ba5a5;
-    color: #000;
-    font-weight: 500;
+    height: 50px;
     cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    background-color: #3ba5a5;
 
-    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: .5s ease;
+}
+section.contato form .btn-enviar span{
+    font-size: 18px;
+    font-weight: 400;
 }
 
-section.contato form .btn-enviar input:hover {
+section.contato form .btn-enviar:hover {
     box-shadow: 0 0 8px #3CA6A6;
     transform: scale(1.05);
 }
 
-/* ---------- REDES SOCIAIS ---------- */
-
-section.contato .contato-redes {
-    width: 600px;
-    height: 500px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    border-bottom-right-radius: 30px;
-
-    background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.30),
-        rgba(255, 255, 255, 0.12)
-    );
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+/* animação de loading */
+/* Spinner */
+.btn-enviar .spinner {
+    width: 25px;
+    height: 25px;
+    border: 3px solid transparent;
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: none;
 }
 
-section.contato .contato-redes i {
-    font-size: 35px;
-    cursor: pointer;
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-section.contato .h3-redes {
-    padding-bottom: 25px;
+.text-enviar.remover-text{
+    display: none;
 }
 
-/* ---------- ÍCONES E TEXTOS ---------- */
-
-.text-icones {
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    /* gap: 10px; */
-    text-align: center;
+/* Estado carregando */
+.btn-enviar.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 
-.text-icones p {
-    text-align: left;
+.btn-enviar.loading .btn-text { /* remove o texto pra ficar só o spin */
+    display: none;
 }
 
-.text-icones a{
-    color: white;
-
-    transition: 0.4s ease;
-}
-.text-icones a:hover{
-    transform: scale(1.09);
-}
-
-.container-redes,
-.container-email {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.p-1{
-    margin-bottom: 12px;
+.btn-enviar.loading .spinner {
+    display: block;
 }
 
 /* Overlay mensagem de sucesso */
@@ -915,9 +986,78 @@ section.contato .h3-redes {
     border-radius: 12px;
     text-align: center;
 }
-/* --------------------------------------------------------------- */
 
-/* footer */
+/* Redes sociais (lado direito)*/
+section.contato .contato-redes {
+    width: 600px;
+    height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-bottom-right-radius: 30px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.30),
+        rgba(255, 255, 255, 0.12)
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+section.contato .contato-redes i {
+    font-size: 35px;
+    cursor: pointer;
+}
+
+section.contato .h3-redes {
+    padding-bottom: 25px;
+}
+
+/* ícones e textos */
+.text-icones {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.text-icones p {
+    text-align: left;
+}
+
+.text-icones a{
+    color: white;
+
+    transition: 0.4s ease;
+}
+.text-icones a:hover{
+    transform: scale(1.09);
+}
+
+.container-redes,
+.container-email {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.p-1{
+    margin-bottom: 12px;
+}
+
+/* ================================================================= */
+
+/* ===================================================== 
+                    FOOTER
+===================================================== */
+
 footer {
     padding: 40px 5%;
     /* box-shadow: 0 0 40px 10px #3CA6A6; */
@@ -964,21 +1104,73 @@ footer .line-footer p a{
     gap: 8px;
 }
 
+.img-logo-footer {
+    width: 100px;
+    height: 100px;
+}
 
+/* ================================================================== */
 
-/* ----------------------------------------------------------- */
+/* ===================================================== 
+                    RESPONSIVIDADE
+===================================================== */
 
-/* responsividade */
+/* =========== TOPO ============ */
+@media screen and (max-width: 1050px) {
+   section.topo .flex {
+        gap: 50px;
+    }
+}
 
-/* PROJETOS */
+@media screen and (max-width: 570px) {
+   .topo .img-topo img{
+        width: 300px;
+        height: 300px;
+   }
+}
+@media screen and (max-width: 855px) {
+   .btn-topo{
+    display: flex;
+        justify-content: center;
+   }
+}
+
+/* =========== PROJETOS ============ */
 @media screen and (max-width: 520px) {
     .projeto-card{
         width: 300px;          /*  diminui o card  */
     }
 }
 
-/* HABILIDADES */
+/* =========== HABILIDADES ============ */
 @media (max-width: 1230px) {
+    section.habilidades .flex {
+        gap: 10%;
+    }
+}
+
+@media (max-width: 899px) {
+    section.habilidades .flex {
+        flex-direction: column;
+    }
+    
+    section.habilidades .feito-com{
+        display: none;
+    }
+    section.habilidades .feito-com-2{
+        margin-top: 50px;
+        opacity: 1;
+    }
+
+    section.habilidades .skills-chart, section.habilidades .feito-com{
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 1030px) {
+    section.habilidades .skill-bar{
+        width: 300px;
+    }
     section.habilidades .flex {
         gap: 0;
     }
@@ -988,46 +1180,47 @@ footer .line-footer p a{
     section.habilidades .flex {
         flex-wrap: wrap;
     }
-    section.habilidades .skills-chart{
+    /* section.habilidades .skills-chart, section.habilidades .feito-com{
         margin-top: 50px;
-    }
-    section.habilidades .feito-com{
-        margin-top: 50px;
-    }
-
+    } */
 }
 
-@media (max-width: 1110px) {
-    .skill-bar {
-        width: 400px;
-    }
-}
-
-/* HEADER */
+/* =========== HEADER ============ */
 @media screen and (max-width: 1460px) {
     .opcoes-hamburguer {
-        left: auto;
-        /* remove centralização */
-        transform: translateY(-20px);
-        /* Mantém só o Y para animação */
+        left: auto; /* remove centralização */
+        transform: translateY(-20px); /* Mantém só o Y para animação */
         right: 10px;
     }
 
     .opcoes-hamburguer.ativar {
-        transform: translateY(0);
-        /* Só desce, sem mover horizontalmente */
+        transform: translateY(0); /* Só desce, sem mover horizontalmente */
+    }
+}
+@media screen and (max-width: 1000px) {
+    nav.menu-desktop  ul li {
+        padding: 0 17px;
     }
 }
 
-/* CONTATO */
+
+
+/* =========== CONTATO ============ */
 @media screen and (max-width: 665px) {
     section.contato .contato-form, section.contato .contato-redes {
         width: 350px;
     }
-  
+    section.contato .contato-redes {
+        padding: 0 5%;
+        text-align: center;
+    }
+    section.contato .contato-redes .p-1{
+        text-align: center;
+    }
 }
 
-/* GERAL */
+
+/* ========== GERAL ============ */
 @media screen and (max-width: 855px) {
     /* classes gerais */
     .flex {
@@ -1042,6 +1235,13 @@ footer .line-footer p a{
     .menu-desktop {
         display: none;
     }
+    .btn-hamburguer{
+        display: block;
+    }
+    .troca-idioma{
+        display: none;
+    }
+
 
     /* topo */
     section.topo {
@@ -1069,11 +1269,7 @@ footer .line-footer p a{
 
     /* Projetos */
 
-
-
     /* contato */
-
-
 
     /* footer */
     footer .flex {
@@ -1084,9 +1280,3 @@ footer .line-footer p a{
     }
 
 }
-
-
-
-
-
-

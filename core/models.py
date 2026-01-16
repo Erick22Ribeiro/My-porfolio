@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import translation
 
 # Create your models here.
 
@@ -22,6 +23,28 @@ class Skill(models.Model):
     def __str__(self):
         return f"{self.nome} - {self.nivel}%"
     
+    
+#classe das habilidades bancos de dados
+class Banco(models.Model):
+    nome = models.CharField(max_length=100)
+    nivel = models.IntegerField(help_text="Nível de 0 a 100")
+    cor = models.CharField(max_length=7, default="#3498db", help_text="Cor em hexadecimal (ex: #3498db)")
+    ordem = models.IntegerField(default=0, help_text="Ordem de exibição")
+
+    icone = models.CharField(
+        max_length=255,
+        default='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/code/code-original.svg',
+        help_text="URL do ícone (SVG/PNG)"
+    )
+
+    class Meta:
+        ordering = ['-nivel', 'ordem']  # Ordena por nível (maior primeiro), e ignora a ordem, se eu quero uma ordem específica é só remover o '-nivel'
+
+
+    def __str__(self):
+        return f"{self.nome} - {self.nivel}%"
+    
+    
 #classe das habilidades ferramentas e sofwares
 class Skill_2(models.Model):
     nome = models.CharField(max_length=100)
@@ -42,6 +65,7 @@ class Skill_2(models.Model):
     def __str__(self):
         return f"{self.nome} - {self.nivel}%"
     
+    
 #class das tecnologias que tem relacionamento com Projeto 
 class Tecnologia(models.Model):
     nome = models.CharField(max_length=50)
@@ -54,10 +78,15 @@ class Tecnologia(models.Model):
     def __str__(self):
         return self.nome
     
+
 #Classe dos projetos 
 class Projeto(models.Model):
-    titulo = models.CharField(max_length=200)
-    descricao = models.TextField()
+    titulo = models.CharField(max_length=200, default="Título")
+    titulo_en = models.CharField(max_length=200, default="Title", blank=True)  # NOVO
+
+    descricao = models.TextField(default="Descrição")
+    descricao_en = models.TextField(default="Description", blank=True)  # NOVO
+
     imagem = models.ImageField(upload_to='projetos/')   #precisa instalar a biblioteca pillow
     tecnologias = models.ManyToManyField(Tecnologia)  #relacionamento muitos para muitos
     link_github = models.URLField(blank=True)
@@ -68,6 +97,8 @@ class Projeto(models.Model):
     class Meta:
         ordering = ['ordem']
 
+     
+ 
 #Classe dos contatos 
 class Contato(models.Model):
     nome = models.CharField(max_length=100)
@@ -77,3 +108,6 @@ class Contato(models.Model):
 
     def __str__(self):
         return self.nome
+    
+
+    

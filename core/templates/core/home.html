@@ -1,5 +1,7 @@
 {% load static %}
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,27 +25,30 @@
     <!-- Icones de redes sociais(bootstrap) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-    <title>Agência erk</title>
+    <link rel="icon" href="static/portfolio/images/iniciais-g.png">
+
+    <title>Erick Ribeiro - Portfólio</title>
 </head>
 
 <body>
 
+
     <header id="header">
         <div class="interface"> <!-- div para fazer com que os itens da página não encostem nas laterais -->
+            
             <div class="logo">
                 <a href="#">
-                    <img src="static/portfolio/images/logo02.png" alt="logo" class="img-logo-p">
-
+                    <img src="static/portfolio/images/iniciais.png" alt="logo" class="img-logo-topo">
                 </a>
             </div> <!-- logo -->
 
             <nav class="menu-desktop">
                 <ul>
-                    <li><a href="#topo" class="menu-link">Início</a></li>
-                    <li><a href="#habilidades" class="menu-link">Habilidades</a></li>
-                    <li><a href="#sobre" class="menu-link">Sobre</a></li>
-                    <li><a href="#projetos" class="menu-link">Projetos</a></li>
-                    <li><a href="#contato" class="menu-link">Contato</a></li>
+                    <li><a data-i18n="menu.inicio" href="#topo" class="menu-link">Início</a></li>
+                    <li><a data-i18n="menu.habilidades" href="#habilidades" class="menu-link">Habilidades</a></li>
+                    <li><a data-i18n="menu.sobre" href="#sobre" class="menu-link">Sobre</a></li>
+                    <li><a data-i18n="menu.projetos" href="#projetos" class="menu-link">Projetos</a></li>
+                    <li><a data-i18n="menu.contato" href="#contato" class="menu-link">Contato</a></li>
                 </ul>
             </nav>
 
@@ -58,15 +63,29 @@
                 <div class="opcoes-hamburguer">
                     <nav>
                         <ul>
-                            <li><a href="#">Início</a></li>
-                            <li><a href="#">Habilidades</a></li>
-                            <li><a href="#">Sobre</a></li>
-                            <li><a href="#">Projetos</a></li>
-                            <li><a href="#">Contato</a></li>
+                            <li><a data-i18n="menu.inicio" href="#topo">Início</a></li>
+                            <li><a data-i18n="menu.habilidades" href="#habilidades">Habilidades</a></li>
+                            <li><a data-i18n="menu.sobre" href="#sobre">Sobre</a></li>
+                            <li><a data-i18n="menu.projetos" href="#projetos">Projetos</a></li>
+                            <li><a data-i18n="menu.contato" href="#contato">Contato</a></li>
                         </ul>
                     </nav>
+
+                    <div class="troca-idioma-2" id="lang-div2">
+                        <button id="btn-lang-mobile"
+                                class="lang-switch"
+                                onclick="toggleLanguage()"
+                                aria-label="Trocar idioma">
+                        </button>
+                    </div>
+
+                    
                 </div>
 
+            </div>
+
+            <div class="troca-idioma" id="lang-div">
+                <button id="btn-lang" class="lang-switch" onclick="toggleLanguage()" aria-label="Trocar idioma"></button>
             </div>
 
         </div><!--  interface -->
@@ -79,31 +98,36 @@
                 <div class="flex">
                     <div class="txt-topo">
 
-                        <h1>Olá, meu nome é Erick Ribeiro<span>.</span></h1>
+                        <h1 class="titulo-topo">
+                            <span data-i18n="topo.ola" class="h1-topo"></span><span class="ponto-topo">.</span>
+                        </h1>                       
 
                         <div class="container-texto-dinamixo">
-                            <span class="texto-fixo">Eu sou</span>
+                            <span data-i18n="topo.estatico" class="texto-fixo">Eu sou</span>
                             <span class="texto-dinamico">
                                 <span id="texto-animado"></span>
                             </span>
                         </div>
 
 
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book.</p>
+                        <p data-i18n="topo.texto">
+                            Estudo tecnologia há dois anos e atuo 
+                            como desenvolvedor com foco em <span class="span-txt-topo">backend</span> e <span class="span-txt-topo">análise de dados</span>. 
+                            Desenvolvo projetos utilizando Python, Django e bibliotecas 
+                            voltadas à análise de dados, como Pandas e Plotly.
+                        </p>
 
                         <div class="btn-topo">
-                            <a href=""><button>Baixar CV</button></a>
+                            <a href="static/portfolio/pdf/Erick_Ribeiro_CV.pdf" target="_blank" download><button data-i18n="topo.btnCv">Baixar CV</button></a>
                             <a href="#contato">
-                                <button>Entre em contato</button>
+                                <button data-i18n="topo.btnCtt">Entre em contato</button>
                             </a>
                         </div>
 
                     </div>
 
                     <div class="img-topo">
-                        <img src="static/portfolio/images/pessoa.png" alt="">
+                        <img src="static/portfolio/images/foto_retangular.png" alt="">
                     </div>
 
                 </div>
@@ -113,9 +137,9 @@
 
         <section class="habilidades" id="habilidades">
             <div class="interface">
-                <h1>Minhas Habilidades</h1>
+                <h1 data-i18n="hab.h1Hab" >Minhas Habilidades</h1>
 
-                <p class="habilidades-titulo">Linguagens e frameworks</p>
+                <p data-i18n="hab.titulo1" class="habilidades-titulo">Linguagens e frameworks</p>
                 <div class="flex">
 
                     <!-- LINGUAGENS -->
@@ -152,7 +176,34 @@
 
                 </div>
 
-                <p class="habilidades-titulo">Ferramentas e softwares</p>
+                <p data-i18n="hab.titulo2" class="habilidades-titulo">Bancos de dados</p>
+                <div class="flex">
+
+                    <div class="habilidades-bloco">
+
+                            <div class="skills-container">
+                                {% for banco in bancos %}
+                                <div class="skill-item">
+
+                                    <!-- <i class="{{ skill.icone }} skill-icon"></i> -->
+                                     <img src="{{ banco.icone }}" alt="{{ banco.nome }}" class="skill-icon">
+
+                                    <span class="skill-name">{{ banco.nome }}</span>
+
+                                    <div class="skill-bar">
+                                        <div class="skill-progress"style="width: {{ banco.nivel }}%; background-color: {{ banco.cor }};">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                    </div>
+
+                </div>
+
+                <p data-i18n="hab.titulo3" class="habilidades-titulo">Ferramentas e softwares</p>
                 <div class="flex">
 
                     <!-- FERRAMENTAS -->
@@ -176,7 +227,7 @@
                     </div>
 
                     <div class="feito-com">
-                        <p>Este portfolio foi criado usando</p>
+                        <p data-i18n="hab.criadoCom" >Este portfolio foi criado usando</p>
 
                         <div class="container-icones-usados">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />
@@ -190,6 +241,20 @@
 
                 </div>
 
+                <!-- leve gambirra pra aparecer outra div centralizada -->
+                <div class="feito-com-2">
+                        <p>Este portfolio foi criado usando</p>
+
+                        <div class="container-icones-usados">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
+                        </div>
+                </div>
+
             </div>
         </section>
         <!-- FIM HABILIDADES -->
@@ -200,27 +265,27 @@
 
                     <div>
                         <div class="img-sobre">
-                            <img src="static/portfolio/images/pessoa.png" alt="">
+                            <img src="static/portfolio/images/foto_retangular.png" alt="">
                         </div>
 
                         <div class="container-idiomas">
 
-                            <h2>Idiomas</h2>
+                            <h2 data-i18n="sobre.idiomas">Idiomas</h2>
 
                             <div class="idioma">
-                                <span class="nome">Português</span>
+                                <span data-i18n="sobre.pt" class="nome">Português</span>
                                 <div class="barra-idioma">
                                     <div class="progresso-idioma pt"></div>
                                 </div>
-                                <span class="nivel">Nativo</span>
+                                <span data-i18n="sobre.nativo" class="nivel">Nativo</span>
                             </div>
 
                             <div class="idioma">
-                                <span class="nome">Inglês</span>
+                                <span data-i18n="sobre.in" class="nome">Inglês</span>
                                 <div class="barra-idioma">
                                     <div class="progresso-idioma ing"></div>
                                 </div>
-                                <span class="nivel">Intermediário</span>
+                                <span data-i18n="sobre.pro" class="nivel">Proficicente</span>
                             </div>
 
                         </div>
@@ -228,7 +293,7 @@
                     </div>
 
                     <div class="txt-sobre">
-                        <h1>Meu nome é Erick Ribeiro</h1>
+                        <h1 data-i18n="sobre.titulo" >Sobre mim.</h1>
                         <p>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
                             been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
@@ -241,8 +306,9 @@
                         </p>
 
                         <div class="btn-social">
-                            <a href="#"><button><i class="bi bi-instagram"></i></button></a>
-                            <a href="#"><button><i class="bi bi-linkedin"></i></button></a>
+                            <a href="https://www.instagram.com/erickk_ribeiro/" target="_blank"><button><i class="bi bi-instagram"></i></button></a>
+                            <a href="https://www.linkedin.com/in/erick-ribeiro-907a8432b/" target="_blank"><button><i class="bi bi-linkedin"></i></button></a>
+                            <a href="https://github.com/Erick22Ribeiro" target="_blank"><button><i class="bi bi-github"></i></button></a>
                         </div>
                     </div>
 
@@ -253,19 +319,19 @@
 
         <section class="projetos" id="projetos">
             <div class="interface">
-                <h1>Meus projetos</h1>
+                <h1 data-i18n="proj.titulo">Meus projetos</h1>
                 <div class="flex">
 
                     {% for projeto in projetos %}
-                    <div class="projeto-card">
+                    <div class="projeto-card" data-projeto-id="{{ projeto.id }}">
 
                         <div class="projeto-imagem" style="background-image: url('{{ projeto.imagem.url }}');">
                             <i class="bi bi-box-arrow-up-right"></i>
                         </div>
 
                         <div class="projeto-info">
-                            <h2>{{ projeto.titulo }}</h2>
-                            <p class="p-escrolavel">{{ projeto.descricao }}</p>
+                            <h2 class="titulo">{{ projeto.titulo }}><!-- {{ projeto.titulo }} --></h2>
+                            <p class="p-escrolavel descricao">{{ projeto.descricao }}"><!-- {{ projeto.descricao }} --></p>
 
                             <div class="container-tecnologias">
                                 {% for tech in projeto.tecnologias.all %}
@@ -310,25 +376,28 @@
         <section class="contato" id="contato">
             <div class="interface">
 
-                <h1>Fale comigo.</h1>
+                <h1 data-i18n="cntt.titulo" >Fale comigo.</h1>
 
                 <div class="flex">
 
                     <div class="contato-form">
-                        <h3>Formulário de contato.</h3>
+                        <h3 data-i18n="cntt.h3form" >Formulário de contato.</h3>
 
                         <form class="form-contato" method="post" action="#contato">
                             {% csrf_token %}
-                            <input type="text" name="nome" id="" placeholder="Seu nome: ">
-                            <input type="text" name="email" id="" placeholder="Seu e-mail: ">
-                            <textarea name="mensagem" id="" placeholder="Sua mensagem: " required></textarea>
-                            <div class="btn-enviar"><input type="submit" value="Enviar"></div>
+                            <input data-i18n-placeholder="cntt.nome" type="text" name="nome" id="" placeholder="Seu nome: ">
+                            <input data-i18n-placeholder="cntt.email" type="text" name="email" id="" placeholder="Seu e-mail: ">
+                            <textarea data-i18n-placeholder="cntt.msg" name="mensagem" id="" placeholder="Sua mensagem: " required></textarea>
+                            <button type="submit" class="btn-enviar">
+                                <span data-i18n="cntt.enviar" class="text-enviar">Enviar</span>
+                                <span class="spinner"></span>
+                            </button>
                         </form>
 
                         <div class="form-overlay">
                             <div class="overlay-content">
-                                <h3>Mensagem enviada!</h3>
-                                <p>Obrigado pelo contato</p>
+                                <h3 data-i18n="cntt.mensEnv">Mensagem enviada!</h3>
+                                <p data-i18n="cntt.obg" >Obrigado pelo contato</p>
                             </div>
                         </div>
 
@@ -338,11 +407,11 @@
 
                         <div class="text-icones">
 
-                            <p class="p-1">Fique avontade para entrar em contato comigo</p>
+                            <p data-i18n="cntt.p1" class="p-1">Fique avontade para entrar em contato comigo</p>
 
                             <div class="container-redes">
-                                <p>através das <br> minhas redes sociais</p>
-                                <a href="" target="_blank"><i class="bi bi-whatsapp"></i></a>
+                                <p data-i18n="cntt.p2" >através das <br> minhas redes sociais</p>
+                                <a href="https://wa.me/5521967245649?text=Olá,%20vim%20pelo%20seu%20portfólio!" target="_blank"><i class="bi bi-whatsapp"></i></a>
                                 <a href="https://www.linkedin.com/in/erick-ribeiro-907a8432b/" target="_blank"><i
                                         class="bi bi-linkedin"></i></a>
                                 <a href="https://www.instagram.com/erickk_ribeiro/" target="_blank"><i
@@ -350,7 +419,7 @@
                             </div>
 
                             <div class="container-email">
-                                <p>ou e-mail</p>
+                                <p data-i18n="cntt.p3" >ou e-mail</p>
                                 <a href="mailto:erick2ribeirogg@gmail.com"><i class="bi bi-envelope-fill"></i></a>
 
 
@@ -359,7 +428,7 @@
                         </div>
 
                         <div class="h3-redes">
-                            <h3>Outros.</h3>
+                            <h3 data-i18n="cntt.outros" >Outros.</h3>
                         </div>
 
                     </div>
@@ -378,7 +447,7 @@
             <div class="line-footer">
                 <div class="flex">
                     <div class="logo-footer">
-                        <img src="static/portfolio/images/logo02.png" alt="" class="img-logo-p">
+                        <img src="static/portfolio/images/iniciais.png" alt="" class="img-logo-footer">
                     </div>
 
                     <div class="btn-social">
