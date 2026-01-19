@@ -174,10 +174,3 @@ STATICFILES_DIRS = [
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-
-if os.environ.get("RENDER") == "true":
-    from django.core.management import call_command
-    try:
-        call_command("loaddata", "initial_data.json")
-    except Exception as e:
-        print("Erro ao carregar fixtures:", e)
