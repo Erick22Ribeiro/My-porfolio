@@ -33,10 +33,7 @@ SECRET_KEY = 'django-insecure-(h!q6yd8!+_@p=r3h!p(ynibzs-k4=##9rfl4@-fl4i3jpc*vu
 DEBUG = False #botei pra dar deploy
 
 
-ALLOWED_HOSTS = [
-    'my-porfolio-wrkw.onrender.com',
-    "localhost",
-]
+ALLOWED_HOSTS = ['*']
 """ ALLOWED_HOSTS = ['*'] """
 """ ALLOWED_HOSTS = ['192.168.200.106'] """
 
