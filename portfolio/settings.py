@@ -13,13 +13,6 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 import os
 from pathlib import Path
 
-if os.environ.get("RENDER"):
-    from django.core.management import call_command
-    try:
-        call_command("loaddata", "initial_data.json")
-    except:
-        pass
-
 #precisei criar essas variáveis para funcionar as imagens
 BASE_DIR = Path(__file__).resolve().parent.parent  
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  #configura a pasta onde o django salva os arquivos enviados
@@ -180,3 +173,11 @@ STATICFILES_DIRS = [
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
+if os.environ.get("RENDER") == "true":
+    from django.core.management import call_command
+    try:
+        call_command("loaddata", "initial_data.json")
+    except Exception as e:
+        print("Erro ao carregar fixtures:", e)
