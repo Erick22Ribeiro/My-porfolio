@@ -110,7 +110,10 @@ def home(request):
                     'nativo': 'Nativo',
                     'in': 'Inglês',
                     'pro': 'Proficiente',
-                    'titulo': 'Sobre mim.'
+                    'titulo': 'Sobre mim.',
+                    'p1': ' Meu nome é Erick Ribeiro, tenho 20 anos e sou do estado do Rio de Janeiro. Sou estudante de Sistemas de Informação pelo Unilasalle-RJ e desenvolvedor com foco em backend e análise de dados. Tenho experiência no desenvolvimento de projetos utilizando Python, além de trabalhar com tecnologias como Django, Pandas, SQL, HTML, CSS e JavaScript.',
+                    'p2': ' Ao longo da minha jornada, venho desenvolvendo projetos práticos com foco no aprendizado contínuo, explorando desde aplicações web, análises de dados, automações e também projetos de machine learning. Já participei de hackathons, experiências que contribuíram para o desenvolvimento do meu pensamento lógico, capacidade de resolver problemas e trabalho em equipe.',
+                    'p3': ' Atualmente, estou em busca do meu primeiro estágio na área de tecnologia, com o objetivo de aplicar meus conhecimentos e aprender com desafios reais do mercado. Tenho interesse especial em backend e dados, e sou uma pessoa curiosa, dedicada e motivada a evoluir constantemente, tanto técnica quanto profissionalmente.'
                 },
                 'cntt': {
                     'titulo': 'Fale comigo.',
@@ -159,7 +162,10 @@ def home(request):
                     'nativo': 'Native',
                     'in': 'English',
                     'pro': 'Proficient',
-                    'titulo': 'About me.'
+                    'titulo': 'About me.',
+                    'p1': 'My name is Erick Ribeiro, I am 20 years old and I am from the state of Rio de Janeiro, Brazil. I am a Information Systems student at Unilasalle-RJ and a developer focused on backend development and data analysis. I have experience developing projects using Python, as well as working with technologies such as Django, Pandas, SQL, HTML, CSS, and JavaScript.', 
+                    'p2': 'Throughout my journey, I have been developing hands-on projects focused on continuous learning, exploring areas such as web applications, data analysis, automation, and machine learning projects. I have also participated in hackathons, experiences that helped me strengthen my logical thinking, problem-solving skills, and teamwork abilities.', 
+                    'p3': 'Currently, I am seeking my first internship opportunity in the technology field, aiming to apply my knowledge and learn from real-world challenges. I have a strong interest in backend development and data-related areas, and I consider myself a curious, dedicated, and highly motivated person to continuously grow both technically and professionally.', 
                 },
                 'cntt': {
                     'titulo': 'talk to me.',

@@ -29,10 +29,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(h!q6yd8!+_@p=r3h!p(ynibzs-k4=##9rfl4@-fl4i3jpc*vu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+""" DEBUG = True """
+DEBUG = False #botei pra dar deploy
 
-#ip: 192.168.200.111
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = [
+    "my-portfolio.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 """ ALLOWED_HOSTS = ['*'] """
 """ ALLOWED_HOSTS = ['192.168.200.106'] """
 
@@ -146,6 +151,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
-
+""" 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static'] 
+ """
+
+STATIC_URL = "/static/"
+
+# Pasta onde o Django vai juntar TODOS os estáticos
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Usado apenas em desenvolvimento
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]

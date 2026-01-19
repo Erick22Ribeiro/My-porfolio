@@ -29,7 +29,7 @@ media/
 # =========================
 # Staticfiles (produção)
 # =========================
-staticfiles/
+#staticfiles/
 
 # =========================
 # IDEs / Editores
