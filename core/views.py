@@ -252,3 +252,4 @@ Mensagem: {mensagem}''',
     }
 
     return render(request, 'core/home.html', context)
+
