@@ -34,7 +34,7 @@ DEBUG = False #botei pra dar deploy
 
 
 ALLOWED_HOSTS = [
-    "my-portfolio.onrender.com",
+    'my-porfolio-wrkw.onrender.com',
     "localhost",
     "127.0.0.1",
 ]
