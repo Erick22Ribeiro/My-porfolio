@@ -1,0 +1,226 @@
+[
+{
+  "model": "core.skill",
+  "pk": 1,
+  "fields": {
+    "nome": "Python",
+    "nivel": 60,
+    "cor": "#ffee50",
+    "ordem": 1,
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 3,
+  "fields": {
+    "nome": "Django",
+    "nivel": 50,
+    "cor": "#4a9757",
+    "ordem": 2,
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 7,
+  "fields": {
+    "nome": "Java",
+    "nivel": 20,
+    "cor": "#FF3C3C",
+    "ordem": 6,
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 9,
+  "fields": {
+    "nome": "Pandas",
+    "nivel": 20,
+    "cor": "#001969",
+    "ordem": 0,
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg"
+  }
+},
+{
+  "model": "core.banco",
+  "pk": 1,
+  "fields": {
+    "nome": "SQLite",
+    "nivel": 20,
+    "cor": "#3498db",
+    "ordem": 0,
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"
+  }
+},
+{
+  "model": "core.skill_2",
+  "pk": 1,
+  "fields": {
+    "nome": "Git",
+    "nivel": 30,
+    "cor": "#ff4500",
+    "ordem": 0,
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+  }
+},
+{
+  "model": "core.skill_2",
+  "pk": 2,
+  "fields": {
+    "nome": "GitHub",
+    "nivel": 40,
+    "cor": "#5a595d",
+    "ordem": 0,
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+  }
+},
+{
+  "model": "core.skill_2",
+  "pk": 3,
+  "fields": {
+    "nome": "VScode",
+    "nivel": 50,
+    "cor": "#1591EA",
+    "ordem": 0,
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
+  }
+},
+{
+  "model": "core.tecnologia",
+  "pk": 1,
+  "fields": {
+    "nome": "Python",
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+  }
+},
+{
+  "model": "core.tecnologia",
+  "pk": 2,
+  "fields": {
+    "nome": "Java",
+    "icone": "devicon-java-plain colored"
+  }
+},
+{
+  "model": "core.tecnologia",
+  "pk": 4,
+  "fields": {
+    "nome": "Django",
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg"
+  }
+},
+{
+  "model": "core.tecnologia",
+  "pk": 5,
+  "fields": {
+    "nome": "HTML",
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+  }
+},
+{
+  "model": "core.tecnologia",
+  "pk": 6,
+  "fields": {
+    "nome": "CSS",
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+  }
+},
+{
+  "model": "core.tecnologia",
+  "pk": 7,
+  "fields": {
+    "nome": "JavaScript",
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+  }
+},
+{
+  "model": "core.tecnologia",
+  "pk": 8,
+  "fields": {
+    "nome": "SQLite",
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"
+  }
+},
+{
+  "model": "core.tecnologia",
+  "pk": 9,
+  "fields": {
+    "nome": "Git",
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+  }
+},
+{
+  "model": "core.tecnologia",
+  "pk": 10,
+  "fields": {
+    "nome": "VScode",
+    "icone": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
+  }
+},
+{
+  "model": "core.projeto",
+  "pk": 2,
+  "fields": {
+    "titulo": "Título",
+    "titulo_en": "Title",
+    "descricao": "Descrição",
+    "descricao_en": "Description",
+    "imagem": "projetos/e_1_7DDnJ6Q.png",
+    "link_github": "",
+    "link_demo": "",
+    "ordem": 1,
+    "criado_em": "2025-12-24",
+    "tecnologias": [
+      1
+    ]
+  }
+},
+{
+  "model": "core.projeto",
+  "pk": 3,
+  "fields": {
+    "titulo": "Título",
+    "titulo_en": "Title",
+    "descricao": "Descrição",
+    "descricao_en": "Description",
+    "imagem": "projetos/e_1_lVLiCNl.png",
+    "link_github": "",
+    "link_demo": "",
+    "ordem": 2,
+    "criado_em": "2025-12-24",
+    "tecnologias": [
+      1,
+      4,
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "core.projeto",
+  "pk": 4,
+  "fields": {
+    "titulo": "Título",
+    "titulo_en": "Title",
+    "descricao": "Descrição",
+    "descricao_en": "Description",
+    "imagem": "projetos/e_1.png",
+    "link_github": "",
+    "link_demo": "",
+    "ordem": 0,
+    "criado_em": "2025-12-24",
+    "tecnologias": [
+      1,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+}
+]
