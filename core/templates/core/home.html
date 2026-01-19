@@ -325,9 +325,13 @@
                     {% for projeto in projetos %}
                     <div class="projeto-card" data-projeto-id="{{ projeto.id }}">
 
-                        <div class="projeto-imagem" style="background-image: url('{{ projeto.imagem.url }}');">
+                        <!-- <div class="projeto-imagem" style="background-image: url('{{ projeto.imagem.url }}');">
+                            <i class="bi bi-box-arrow-up-right"></i>
+                        </div> -->
+                        <div class="projeto-imagem" style="background-image: url('{{ projeto.imagem }}');">
                             <i class="bi bi-box-arrow-up-right"></i>
                         </div>
+
 
                         <div class="projeto-info">
                             <h2 class="titulo">{{ projeto.titulo }}><!-- {{ projeto.titulo }} --></h2>

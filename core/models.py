@@ -87,7 +87,10 @@ class Projeto(models.Model):
     descricao = models.TextField(default="Descrição")
     descricao_en = models.TextField(default="Description", blank=True)  # NOVO
 
-    imagem = models.ImageField(upload_to='projetos/')   #precisa instalar a biblioteca pillow
+    imagem = models.URLField(
+    help_text="URL da imagem do projeto (GitHub RAW, Cloudinary, etc)"
+    )
+
     tecnologias = models.ManyToManyField(Tecnologia)  #relacionamento muitos para muitos
     link_github = models.URLField(blank=True)
     link_demo = models.URLField(blank=True)
