@@ -197,9 +197,9 @@ import os
 
 def criar_superuser(request):
     User = get_user_model()
-    username = os.environ.get("DJANGO_ADMIN_USER", "admin")
-    email = os.environ.get("DJANGO_ADMIN_EMAIL", "admin@admin.com")
-    password = os.environ.get("DJANGO_ADMIN_PASSWORD", "admin123")
+    username = os.environ.get("DJANGO_ADMIN_USER", "Erick")
+    email = os.environ.get("DJANGO_ADMIN_EMAIL", "erick2ribeirogg@gmail.com")
+    password = os.environ.get("DJANGO_ADMIN_PASSWORD", "e65r43i21")
 
     if not User.objects.filter(username=username).exists():
         User.objects.create_superuser(username=username, email=email, password=password)
