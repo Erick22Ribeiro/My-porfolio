@@ -118,11 +118,13 @@
                         </p>
 
                         <div class="btn-topo">
-                            <a href="static/portfolio/pdf/Erick_Ribeiro_CV.pdf" target="_blank" download><button data-i18n="topo.btnCv">Baixar CV</button></a>
+                            <a class="btn" href="static/portfolio/pdf/Erick_Ribeiro_CV.pdf" target="_blank" download><button data-i18n="topo.btnCv">Baixar CV</button></a>
                             <a href="#contato">
                                 <button data-i18n="topo.btnCtt">Entre em contato</button>
                             </a>
                         </div>
+
+                        
 
                     </div>
 
@@ -168,13 +170,23 @@
                     </div>
 
                             <!-- GRÁFICO -->
-                            <div class="skills-chart">
-                                <canvas id="skillsChart" data-labels='{{ skills_labels|safe }}'
-                                    data-values='{{ skills_values|safe }}' data-colors='{{ skills_colors|safe }}'>
-                                </canvas>
-                            </div>
+                    <div class="skills-chart">
+                        <canvas id="skillsChart" data-labels='{{ skills_labels|safe }}'
+                            data-values='{{ skills_values|safe }}' data-colors='{{ skills_colors|safe }}'>
+                        </canvas>
+                    </div>
 
                 </div>
+
+                <!-- mobile -->
+                 <div class="div-skills-chart-2">
+                    <div class="skills-chart-2">
+                        <canvas id="skillsChart-2" data-labels='{{ skills_labels|safe }}'
+                            data-values='{{ skills_values|safe }}' data-colors='{{ skills_colors|safe }}'>
+                        </canvas>
+                    </div>
+                 </div>
+                
 
 
                 <p data-i18n="hab.titulo2" class="habilidades-titulo">Bancos de dados</p>

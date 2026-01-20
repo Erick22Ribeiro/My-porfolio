@@ -20,6 +20,11 @@ body {
     padding-top: 100px;/*  após mexer no header para animar o scrol, a paginma ficou meio cortada, adicionei isso para compensar */
 }
 
+html, body {    /* pra tirar o scrol horizontao do mobile */
+    overflow-x: hidden;
+    width: 100%;
+}
+
 /* esta classe serve para delimitar a área dos itens da página */
 .interface {
     max-width: 1280px;
@@ -48,12 +53,13 @@ section {
 
 /* Remove cor azul padrão de links no mobile */
 a {
-    color: inherit;
+    color: black;
     text-decoration: none;
 }
 
-/* Estados de interação (mobile principalmente) */
-
+button {    /* pra deixar o texto dos botões em preto no mobile */
+    color: #000000 !important; 
+}
 
 /* =====================================================  */
 
@@ -483,7 +489,21 @@ section.habilidades .flex {
 
     display: flex;
     justify-content: center;
+}
 
+
+.div-skills-chart-2{
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.skills-chart-2{
+    width: 274px; 
+    height: 200px;
+    align-self: center;
+
+    display: flex;
+    justify-content: center;
 }
 
 /* feito com */
@@ -1194,9 +1214,16 @@ footer .line-footer p a{
     section.habilidades .flex {
         flex-wrap: wrap;
     }
-    /* section.habilidades .skills-chart, section.habilidades .feito-com{
+}
+
+@media (max-width: 540px) {
+    section.habilidades .skills-chart {
+        display: none;
+    }
+    section.habilidades .div-skills-chart-2 {
         margin-top: 50px;
-    } */
+        display: flex;
+    }
 }
 
 /* =========== HEADER ============ */

@@ -39,7 +39,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
 ]
 """ ALLOWED_HOSTS = ['*'] """
-""" ALLOWED_HOSTS = ['192.168.200.106'] """
+
 
 CSRF_TRUSTED_ORIGINS = [
     "https://my-porfolio-wrkw.onrender.com"
@@ -108,13 +108,16 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+#SQLite (local)
 """ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 } """
-DATABASES = {  #postgres
+
+#postgres (deploy)
+DATABASES = {  
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('POSTGRES_DB'),

@@ -1,5 +1,4 @@
-/* código js antes da otimização*/
-
+/* Grafico desktop */
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('skillsChart');
     if (!canvas) return;
@@ -28,6 +27,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+/* Grafico mobile */
+document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('skillsChart-2');
+    if (!canvas) return;
+
+    const labels = JSON.parse(canvas.dataset.labels);
+    const values = JSON.parse(canvas.dataset.values);
+    const colors = JSON.parse(canvas.dataset.colors);
+
+    new Chart(canvas, {
+        type: 'doughnut',
+        data: {
+            labels,
+            datasets: [{
+                data: values,
+                backgroundColor: colors,
+                borderWidth: 0
+            }]
+        },
+        options: {
+            cutout: '65%',
+            plugins: {
+            legend: {
+            display: false
+        }
+    }
+        }
+    });
+});
+
+
 
 /* botão menu hamburguer */
 function animar() {
@@ -319,3 +350,19 @@ const savedLang = localStorage.getItem("lang") || "pt";
 setLanguage(savedLang);
 
 
+function moveChart() {
+    const canvas = document.getElementById('skillsChart');
+    const desktop = document.querySelector('.desktop-anchor');
+    const mobile = document.querySelector('.mobile-anchor');
+
+    if (!canvas || !desktop || !mobile) return;
+
+    if (window.innerWidth <= 768) {
+        mobile.appendChild(canvas);
+    } else {
+        desktop.appendChild(canvas);
+    }
+}
+
+window.addEventListener('load', moveChart);
+window.addEventListener('resize', moveChart);
