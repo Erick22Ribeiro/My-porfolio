@@ -231,7 +231,7 @@ Nome: {nome}
 Email: {email}
 
 Mensagem: {mensagem}''',
-                from_email=None,
+                from_email='erick22reserva@gmail.com',
                 recipient_list=['erick22reserva@gmail.com'],
                 fail_silently=False,
             )
