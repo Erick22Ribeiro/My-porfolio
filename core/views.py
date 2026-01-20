@@ -150,31 +150,24 @@ def home(request):
     skills_values = [skill.nivel for skill in skills]
     skills_colors = [skill.cor for skill in skills]
 
+    #salva contato
     if request.method == 'POST':
         form = ContatoForm(request.POST)
         if form.is_valid():
-            contato = form.save()
+            # Salva o contato no banco
+            form.save()
+            
+            # Mensagem de sucesso para o usuário
             messages.success(request, "Mensagem enviada!")
 
-            nome = contato.nome
-            email = contato.email
-            mensagem = contato.mensagem
-
-            send_mail(
-                subject=f'Novo contato - {nome}',
-                message=f'''Nova mensagem pelo portfólio: 
-Nome: {nome}
-Email: {email}
-
-Mensagem: {mensagem}''',
-                from_email='erick22reserva@gmail.com',
-                recipient_list=['erick22reserva@gmail.com'],
-                fail_silently=False,
-            )
-
+            # Retorna JSON para requisições AJAX (se você estiver usando)
             return JsonResponse({"status": "ok"})
+        else:
+            # Caso o form seja inválido
+            return JsonResponse({"status": "erro", "errors": form.errors}, status=400)
     else:
         form = ContatoForm()
+
 
     context = {
         'skills': skills,
@@ -190,18 +183,3 @@ Mensagem: {mensagem}''',
     return render(request, 'core/home.html', context)
 
 
-# views.py
-from django.http import HttpResponse
-from django.contrib.auth import get_user_model
-import os
-
-def criar_superuser(request):
-    User = get_user_model()
-    username = os.environ.get("DJANGO_ADMIN_USER", "Erick")
-    email = os.environ.get("DJANGO_ADMIN_EMAIL", "erick2ribeirogg@gmail.com")
-    password = os.environ.get("DJANGO_ADMIN_PASSWORD", "e65r43i21")
-
-    if not User.objects.filter(username=username).exists():
-        User.objects.create_superuser(username=username, email=email, password=password)
-        return HttpResponse("Superuser criado!")
-    return HttpResponse("Superuser já existe!")

@@ -8,8 +8,6 @@ class SkillAdmin(admin.ModelAdmin):
     list_editable = ['nivel', 'cor', 'ordem']
 
 
-#login: Nome: Erick; Senha: e65r43i21
-
 @admin.register(Skill_2)
 class SkillAdmin(admin.ModelAdmin):
     list_display = ['icone', 'nome', 'nivel', 'cor', 'ordem']
