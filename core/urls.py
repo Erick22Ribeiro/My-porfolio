@@ -6,4 +6,6 @@ from django.conf.urls.i18n import i18n_patterns #pra trocar o idioma
 urlpatterns = [
     path('', views.home, name='home'),
     path("i18n/", include("django.conf.urls.i18n")),
+    path('criar_superuser/', views.criar_superuser, name='criar_superuser'),
+
 ]
