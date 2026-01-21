@@ -122,8 +122,8 @@ let idiomaAtual = localStorage.getItem("lang") || "pt";
 let textos = textosPorIdioma[idiomaAtual];
 
 const velocidadeDigitacao = 100; // velocidade da digitação
-const velocidadeApagar = 50;   // velocidade de apagar
-const delayApagar = 1500;       // pausa antes de apagar
+const velocidadeApagar = 70;   // velocidade de apagar
+const delayApagar = 1100;       // pausa antes de apagar
 
 let textIndex = 0;
 let charIndex = 0;
