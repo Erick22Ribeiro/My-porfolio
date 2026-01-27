@@ -367,10 +367,16 @@
                                     <span>Code</span>
                                 </a>
 
-                                <a href="#" target="_blank" class="btn-projeto">
+                                {% if projeto.link_demo %}
+                                <a href="{{ projeto.link_demo }}" target="_blank" class="btn-projeto">
                                     <i class="bi bi-display"></i>
                                     <span>Prévia</span>
                                 </a>
+
+                                {% else %}
+                                
+                                {% endif %}
+
                             </div>
 
                         </div>
