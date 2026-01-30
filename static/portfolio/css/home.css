@@ -566,6 +566,7 @@ section.sobre .flex {
 
 .sobre .txt-sobre p {
     margin: 20px 0;
+    font-size: 20px;
     text-align: justify;
 }
 

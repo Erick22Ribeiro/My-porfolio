@@ -47,8 +47,9 @@ def home(request):
                     'in': 'Inglês',
                     'pro': 'Proficiente',
                     'titulo': 'Sobre mim.',
-                    'p1': ' Meu nome é Erick Ribeiro, tenho 20 anos e sou do estado do Rio de Janeiro. Sou estudante de Sistemas de Informação pelo Unilasalle-RJ e desenvolvedor com foco em backend e análise de dados. Tenho experiência no desenvolvimento de projetos utilizando Python, além de trabalhar com tecnologias como Django, Pandas, SQL, HTML, CSS e JavaScript.',
-                    'p2': ' Ao longo da minha jornada, venho desenvolvendo projetos práticos com foco no aprendizado contínuo, explorando desde aplicações web, análises de dados, automações e também projetos de machine learning. Já participei de hackathons, experiências que contribuíram para o desenvolvimento do meu pensamento lógico, capacidade de resolver problemas e trabalho em equipe.',
+                    
+                    'p1': 'Meu nome é Erick Ribeiro, tenho 20 anos e sou do Rio de Janeiro. Sou estudante de Sistemas de Informação pelo Unilasalle-RJ e desenvolvedor com foco em backend e análise de dados. ',
+                    'p2': 'Venho desenvolvendo projetos práticos com foco no aprendizado contínuo, explorando desde aplicações web, análises de dados, automações e também projetos de machine learning. Já participei de hackathons, experiências que contribuíram para o desenvolvimento do meu pensamento lógico, capacidade de resolver problemas e trabalho em equipe.',
                     'p3': ' Atualmente, estou em busca do meu primeiro estágio na área de tecnologia, com o objetivo de aplicar meus conhecimentos e aprender com desafios reais do mercado. Tenho interesse especial em backend e dados, e sou uma pessoa curiosa, dedicada e motivada a evoluir constantemente, tanto técnica quanto profissionalmente.'
                 },
                 'cntt': {
